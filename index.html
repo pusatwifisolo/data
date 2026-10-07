@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#f8fafc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Pusat Data</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231e40af'/><path d='M28 32h44v8H28zm0 14h44v8H28zm0 14h28v8H28z' fill='white'/><circle cx='72' cy='68' r='12' fill='%23fbbf24'/><path d='M68 68h8M72 64v8' stroke='%231e40af' stroke-width='3' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --bg-gradient: linear-gradient(160deg, #eef2ff 0%, #f0f9ff 35%, #f8fafc 70%, #f1f5f9 100%);
+      --surface: #ffffff;
+      --border: rgba(148, 163, 184, 0.18);
+      --border-light: rgba(148, 163, 184, 0.12);
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --primary: #2563eb;
+      --primary-deep: #1e40af;
+      --primary-soft: rgba(37, 99, 235, 0.09);
+      --primary-hover: rgba(37, 99, 235, 0.15);
+      --accent: #0ea5e9;
+      --success: #059669;
+      --success-soft: rgba(5, 150, 105, 0.1);
+      --success-hover: rgba(5, 150, 105, 0.18);
+      --warning: #d97706;
+      --purple: #7c3aed;
+      --nav-height: 56px;
+      --radius: 12px;
+      --radius-sm: 10px;
+      --radius-xs: 7px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow: 0 2px 8px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
+      --shadow-glow: 0 4px 20px rgba(37, 99, 235, 0.22);
+      --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      max-height: 100dvh;
+      overflow: hidden;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.35;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overscroll-behavior: none;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      background: var(--bg-gradient);
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
+    }
+
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar {
+      width: 0 !important;
+      height: 0 !important;
+      display: none !important;
+    }
+
+    /* ===== HEADER ===== */
+    .app-header {
+      flex-shrink: 0;
+      padding: 10px 14px 8px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 10;
+      position: relative;
+    }
+
+    .app-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 40%, #0ea5e9 75%, #38bdf8 100%);
+      opacity: 0.9;
+    }
+
+    .app-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.15) 30%, rgba(14, 165, 233, 0.12) 70%, transparent 100%);
+    }
+
+    .app-header h1 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 55%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.15;
+    }
+
+    .app-header p {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      margin-top: 1px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: 0.8;
+    }
+
+    /* ===== MAIN ===== */
+    .app-main {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+    }
+
+    .tabs-wrapper {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      transition: transform 280ms cubic-bezier(0.32, 0.72, 0, 1);
+      will-change: transform;
+    }
+
+    .tab-panel {
+      width: 33.3333%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 8px 12px 12px;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      overscroll-behavior-x: none;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 9px 12px;
+      margin-bottom: 7px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-title .material-symbols-rounded { font-size: 14px; }
+    .card-title.blue { color: var(--primary); }
+    .card-title.sky { color: var(--accent); }
+    .card-title.purple { color: var(--purple); }
+
+    .card-label {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      margin-bottom: 1px;
+      font-weight: 500;
+    }
+
+    .card-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.025em;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      user-select: text;
+      word-break: break-all;
+      line-height: 1.3;
+    }
+
+    .card-value.large {
+      font-size: 1.02rem;
+      letter-spacing: 0.03em;
+    }
+
+    .card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ===== SECTION ===== */
+    .section-title {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin: 12px 0 6px;
+      padding-left: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .section-title:first-child { margin-top: 0; }
+    .section-title .material-symbols-rounded {
+      font-size: 15px;
+      color: var(--primary);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: none;
+      border-radius: var(--radius-xs);
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms ease, box-shadow 150ms ease;
+      min-height: 32px;
+      min-width: 32px;
+      padding: 0 9px;
+      user-select: none;
+      -webkit-user-select: none;
+      position: relative;
+      overflow: hidden;
+      touch-action: manipulation;
+      -webkit-touch-callout: none;
+    }
+
+    .btn:active {
+      transform: scale(0.92);
+      transition: transform 80ms ease;
+    }
+
+    .btn:focus { outline: none; }
+    .btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .btn-copy {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .btn-copy:hover { background: var(--primary-hover); }
+    .btn-copy:active { background: rgba(37, 99, 235, 0.22); }
+
+    .btn-dm {
+      background: var(--success-soft);
+      color: var(--success);
+      padding: 0;
+      width: 32px;
+      border-radius: 50%;
+    }
+    .btn-dm:hover { background: var(--success-hover); }
+    .btn-dm:active { background: rgba(5, 150, 105, 0.25); }
+    .btn-dm .material-symbols-rounded { font-size: 16px; }
+
+    .btn-full {
+      width: 100%;
+      margin-top: 8px;
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #0ea5e9 100%);
+      color: #fff;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-glow);
+      font-size: 0.76rem;
+      font-weight: 650;
+    }
+    .btn-full:hover { box-shadow: 0 6px 24px rgba(37, 99, 235, 0.32); }
+    .btn-full:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn .material-symbols-rounded { font-size: 15px; }
+
+    .btn .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.25);
+      transform: scale(0);
+      animation: ripple-anim 450ms ease-out;
+      pointer-events: none;
+    }
+    .btn-dm .ripple { background: rgba(5, 150, 105, 0.3); }
+    .btn-full .ripple { background: rgba(255, 255, 255, 0.35); }
+
+    @keyframes ripple-anim {
+      to { transform: scale(2.8); opacity: 0; }
+    }
+
+    /* ===== DETAIL ===== */
+    .detail-block {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      padding: 3px 0;
+    }
+
+    .detail-key {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    .detail-val {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+      word-break: break-all;
+      user-select: text;
+    }
+
+    /* ===== CONTACT / NIK LIST — clean, no avatar squares ===== */
+    .list-group {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+      min-height: 44px; /* comfortable touch row */
+    }
+
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-item .name {
+      font-size: 0.84rem;
+      font-weight: 650;
+      color: var(--text);
+      margin-bottom: 1px;
+      letter-spacing: -0.01em;
+    }
+
+    .list-item .number {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+      user-select: text;
+    }
+
+    /* subtle left accent bar for visual separation */
+    .list-item {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .list-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 22%;
+      bottom: 22%;
+      width: 2.5px;
+      border-radius: 0 3px 3px 0;
+      background: linear-gradient(180deg, #2563eb, #0ea5e9);
+      opacity: 0.35;
+      transition: opacity 150ms ease;
+    }
+
+    .list-item:active::before {
+      opacity: 0.7;
+    }
+
+    /* ===== KK CARD ===== */
+    .kk-card {
+      background: linear-gradient(145deg, #1e3a8a 0%, #1e40af 30%, #2563eb 65%, #0ea5e9 100%);
+      border: none;
+      text-align: center;
+      padding: 12px 12px;
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25), 0 2px 6px rgba(37, 99, 235, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kk-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -25%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .kk-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -20%;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .kk-card .card-title {
+      justify-content: center;
+      margin-bottom: 6px;
+      color: rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 1;
+    }
+
+    .kk-card .card-value {
+      font-size: 1.08rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      font-weight: 750;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .kk-card .btn-copy {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      min-width: 100px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      font-weight: 650;
+    }
+    .kk-card .btn-copy:hover { background: rgba(255, 255, 255, 0.28); }
+    .kk-card .btn-copy:active { background: rgba(255, 255, 255, 0.35); }
+    .kk-card .btn-copy .ripple { background: rgba(255, 255, 255, 0.4); }
+
+    /* ===== BOTTOM NAV ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      height: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(24px) saturate(1.5);
+      -webkit-backdrop-filter: blur(24px) saturate(1.5);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: stretch;
+      z-index: 100;
+      box-shadow: 0 -6px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color var(--transition);
+      position: relative;
+      padding-top: 5px;
+      user-select: none;
+    }
+
+    .nav-item .material-symbols-rounded {
+      font-size: 20px;
+      transition: transform 200ms cubic-bezier(0.34, 1.4, 0.64, 1), font-variation-settings 200ms ease, color 200ms ease;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .nav-item.active { color: var(--primary); }
+    .nav-item.active .material-symbols-rounded {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 28px;
+      height: 2.5px;
+      border-radius: 0 0 3px 3px;
+      background: linear-gradient(90deg, #1e40af, #0ea5e9);
+      transition: transform 220ms cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .nav-item.active::after { transform: translateX(-50%) scaleX(1); }
+    .nav-item:active { opacity: 0.65; }
+    .nav-item:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+    }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(20px) scale(0.96);
+      background: #0f172a;
+      color: #f8fafc;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 220ms cubic-bezier(0.34, 1.4, 0.64, 1);
+      z-index: 200;
+      white-space: nowrap;
+      max-width: calc(100% - 28px);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+    .toast .material-symbols-rounded {
+      font-size: 17px;
+      color: #34d399;
+    }
+
+    /* Desktop frame */
+    @media (min-width: 481px) {
+      body {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        box-shadow: 0 0 80px rgba(37, 99, 235, 0.07);
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      .bottom-nav {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+      }
+      .tab-panel { padding: 12px 16px 16px; }
+    }
+
+    /* Narrow phones */
+    @media (max-width: 360px) {
+      .app-header { padding: 8px 12px 7px; }
+      .app-header h1 { font-size: 1.08rem; }
+      .tab-panel { padding: 6px 10px 10px; }
+      .card-value.large { font-size: 0.92rem; }
+      .kk-card .card-value { font-size: 0.95rem; letter-spacing: 0.06em; }
+      .btn { min-height: 30px; min-width: 30px; padding: 0 8px; font-size: 0.68rem; }
+      .btn-dm { width: 30px; }
+      .list-item { padding: 7px 10px; padding-left: 12px; min-height: 40px; }
+      .list-item .name { font-size: 0.8rem; }
+      .list-item .number { font-size: 0.7rem; }
+    }
+
+    /* Short screens — pack content so less scrolling */
+    @media (max-height: 720px) {
+      .app-header { padding: 8px 14px 6px; }
+      .app-header h1 { font-size: 1.1rem; }
+      .app-header p { font-size: 0.64rem; margin-top: 0; }
+      .tab-panel { padding: 6px 12px 10px; }
+      .card { padding: 8px 11px; margin-bottom: 6px; }
+      .card-title { margin-bottom: 4px; }
+      .detail-block { margin-top: 6px; padding-top: 6px; }
+      .detail-row { padding: 2px 0; }
+      .btn-full { height: 34px; margin-top: 6px; }
+      .kk-card { padding: 10px 12px; }
+      .kk-card .card-value { font-size: 1rem; margin-bottom: 8px; }
+      .section-title { margin: 10px 0 5px; }
+      .list-item { padding: 6px 12px; min-height: 38px; }
+      .list-item .name { font-size: 0.8rem; margin-bottom: 0; }
+      .list-item .number { font-size: 0.7rem; }
+      :root { --nav-height: 52px; }
+    }
+
+    /* Very short (SE / small Android) */
+    @media (max-height: 600px) {
+      .app-header { padding: 6px 12px 5px; }
+      .tab-panel { padding: 4px 10px 8px; }
+      .card { padding: 7px 10px; margin-bottom: 5px; }
+      .list-item { padding: 5px 10px; min-height: 36px; }
+      .kk-card { padding: 8px 10px; }
+      .section-title { margin: 8px 0 4px; }
+      :root { --nav-height: 48px; }
+    }
+
+    /* Landscape phones — keep usable */
+    @media (max-height: 420px) and (orientation: landscape) {
+      .app-header { padding: 4px 12px; }
+      .app-header p { display: none; }
+      .tab-panel { padding: 4px 10px 6px; }
+      :root { --nav-height: 44px; }
+      .nav-item .material-symbols-rounded { font-size: 18px; }
+      .nav-item { font-size: 0.55rem; padding-top: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <h1 id="headerTitle">Tagihan</h1>
+    <p id="headerSub">Data tagihan penting</p>
+  </header>
+
+  <main class="app-main" id="appMain">
+    <div class="tabs-wrapper" id="tabsWrapper">
+      <section class="tab-panel" id="tab-tagihan" aria-label="Tagihan">
+        <div class="card">
+          <div class="card-title blue">
+            <span class="material-symbols-rounded">bolt</span>
+            Token Listrik
+          </div>
+          <div class="card-label">Tegal Makmur</div>
+          <div class="card-row" style="margin-top:5px">
+            <div class="card-value large">14384251667</div>
+            <button type="button" class="btn btn-copy" onclick="copyText('14384251667', this)" aria-label="Salin token listrik">
+              <span class="material-symbols-rounded">content_copy</span>
+              Salin
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title sky">
+            <span class="material-symbols-rounded">sim_card</span>
+            XL SATU
+          </div>
+          <div class="card-label">ID Pelanggan</div>
+          <div class="card-row" style="margin-top:5px">
+            <div class="card-value large">11832647</div>
+            <button type="button" class="btn btn-copy" onclick="copyText('11832647', this)" aria-label="Salin ID Pelanggan XL SATU">
+              <span class="material-symbols-rounded">content_copy</span>
+              Salin
+            </button>
+          </div>
+          <div class="detail-block">
+            <div class="card-title purple" style="margin-bottom:5px">
+              <span class="material-symbols-rounded">info</span>
+              Detail
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Nama</span>
+              <span class="detail-val">Ridwan Budi Laksono</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">ID XL Satu</span>
+              <span class="detail-val">11832647</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Nomor Terdaftar</span>
+              <span class="detail-val">085777773541</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-key">Email</span>
+              <span class="detail-val">ridwan.budilaksono@gmail.com</span>
+            </div>
+            <button type="button" class="btn btn-full" onclick="copyDetailXL(this)" aria-label="Salin seluruh detail XL SATU">
+              <span class="material-symbols-rounded">content_copy</span>
+              Salin Detail
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="tab-kontak" aria-label="Kontak">
+        <div class="list-group" id="contactsList"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-nik" aria-label="NIK">
+        <div class="card kk-card">
+          <div class="card-title">
+            <span class="material-symbols-rounded">family_restroom</span>
+            Kartu Keluarga
+          </div>
+          <div class="card-value large">3372050809210001</div>
+          <button type="button" class="btn btn-copy" onclick="copyText('3372050809210001', this)" aria-label="Salin nomor Kartu Keluarga">
+            <span class="material-symbols-rounded">content_copy</span>
+            Salin
+          </button>
+        </div>
+
+        <div class="section-title">
+          <span class="material-symbols-rounded">groups</span>
+          NIK Keluarga
+        </div>
+        <div class="list-group" id="nikKeluargaList"></div>
+
+        <div class="section-title">
+          <span class="material-symbols-rounded">elderly</span>
+          NIK Orang Tua
+        </div>
+        <div class="list-group" id="nikOrtuList"></div>
+      </section>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" role="tablist" aria-label="Navigasi utama">
+    <button class="nav-item active" role="tab" aria-selected="true" data-index="0" onclick="switchTab(0)" aria-label="Tagihan">
+      <span class="material-symbols-rounded">receipt_long</span>
+      Tagihan
+    </button>
+    <button class="nav-item" role="tab" aria-selected="false" data-index="1" onclick="switchTab(1)" aria-label="Kontak">
+      <span class="material-symbols-rounded">contacts</span>
+      Kontak
+    </button>
+    <button class="nav-item" role="tab" aria-selected="false" data-index="2" onclick="switchTab(2)" aria-label="NIK">
+      <span class="material-symbols-rounded">badge</span>
+      NIK
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="material-symbols-rounded">check_circle</span>
+    <span id="toastMsg">Berhasil disalin</span>
+  </div>
+
+  <script>
+    const contacts = [
+      { name: "Ridwan", number: "085777773541" },
+      { name: "Meirna", number: "085777773542" },
+      { name: "Meirna Im3", number: "085602908026" },
+      { name: "Bapak Gunadi", number: "085113620313" },
+      { name: "Ibu Sunarmi", number: "085173378354" },
+      { name: "Mas Aris", number: "085745199354" },
+      { name: "Mas Ubaid", number: "085647535907" },
+      { name: "Mba Indah", number: "085725435482" },
+      { name: "Rohmat", number: "085182359687" },
+      { name: "Selfiana", number: "085777773564" }
+    ];
+
+    const nikKeluarga = [
+      { name: "Ridwan", nik: "3311080405980001" },
+      { name: "Meirna", nik: "3372055905950008" },
+      { name: "Fathan", nik: "3372051411210002" },
+      { name: "Khansa", nik: "3372054106230005" }
+    ];
+
+    const nikOrtu = [
+      { name: "Bapak Gunadi", nik: "3311080608690004" },
+      { name: "Ibu Sunarmi", nik: "3311084705710001" }
+    ];
+
+    const headers = [
+      { title: "Tagihan", sub: "Data tagihan penting" },
+      { title: "Kontak", sub: "Nomor yang sering digunakan" },
+      { title: "NIK", sub: "Data identitas keluarga" }
+    ];
+
+    let currentTab = 0;
+    const totalTabs = 3;
+    let toastTimer = null;
+    let isAnimating = false;
+
+    function renderContacts() {
+      const container = document.getElementById("contactsList");
+      container.innerHTML = contacts.map((c) => `
+        <div class="list-item">
+          <div class="card-info">
+            <div class="name">${c.name}</div>
+            <div class="number">${c.number}</div>
+          </div>
+          <div class="card-actions">
+            <button type="button" class="btn btn-copy" onclick="copyText('${c.number}', this)" aria-label="Salin nomor ${c.name}" title="Salin">
+              <span class="material-symbols-rounded">content_copy</span>
+            </button>
+            <button type="button" class="btn btn-dm" onclick="openWhatsApp('${c.number}')" aria-label="Kirim WhatsApp ke ${c.name}" title="WhatsApp">
+              <span class="material-symbols-rounded">send</span>
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderNikList(data, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = data.map((item) => `
+        <div class="list-item">
+          <div class="card-info">
+            <div class="name">${item.name}</div>
+            <div class="number">${item.nik}</div>
+          </div>
+          <div class="card-actions">
+            <button type="button" class="btn btn-copy" onclick="copyText('${item.nik}', this)" aria-label="Salin NIK ${item.name}" title="Salin">
+              <span class="material-symbols-rounded">content_copy</span>
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function createRipple(btn, e) {
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = (e ? e.clientX - rect.left : rect.width / 2) - size / 2;
+      const y = (e ? e.clientY - rect.top : rect.height / 2) - size / 2;
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = size + "px";
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      btn.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    }
+
+    function copyText(text, btn, e) {
+      if (btn) {
+        createRipple(btn, e);
+        try { btn.blur(); } catch (_) {}
+      }
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast("Berhasil disalin");
+        }).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.setAttribute("tabindex", "-1");
+      ta.setAttribute("aria-hidden", "true");
+      ta.setAttribute("inputmode", "none");
+      ta.style.cssText = "position:fixed;left:-9999px;top:0;width:1px;height:1px;padding:0;margin:0;opacity:0;border:0;font-size:16px;pointer-events:none;";
+      document.body.appendChild(ta);
+      try {
+        const range = document.createRange();
+        range.selectNodeContents(ta);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try { ta.setSelectionRange(0, text.length); } catch (_) {}
+        const ok = document.execCommand("copy");
+        sel.removeAllRanges();
+        showToast(ok ? "Berhasil disalin" : "Gagal menyalin");
+      } catch (err) {
+        showToast("Gagal menyalin");
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyDetailXL(btn) {
+      const text = `Nama : Ridwan Budi Laksono
+ID XL Satu : 11832647
+Nomor Terdaftar : 085777773541
+Email : ridwan.budilaksono@gmail.com`;
+      copyText(text, btn);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastMsg").textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1700);
+    }
+
+    function openWhatsApp(number) {
+      let cleaned = number.replace(/\D/g, "");
+      if (cleaned.startsWith("0")) cleaned = "62" + cleaned.slice(1);
+      else if (!cleaned.startsWith("62")) cleaned = "62" + cleaned;
+      window.open("https://wa.me/" + cleaned, "_blank");
+    }
+
+    function switchTab(index) {
+      if (isAnimating) return;
+      const next = ((index % totalTabs) + totalTabs) % totalTabs;
+      if (next === currentTab) return;
+      isAnimating = true;
+      currentTab = next;
+      updateUI();
+      setTimeout(() => { isAnimating = false; }, 290);
+    }
+
+    function updateUI() {
+      document.getElementById("tabsWrapper").style.transform = "translateX(-" + (currentTab * 33.3333) + "%)";
+      document.querySelectorAll(".nav-item").forEach((btn, i) => {
+        const active = i === currentTab;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-selected", active);
+      });
+      document.getElementById("headerTitle").textContent = headers[currentTab].title;
+      document.getElementById("headerSub").textContent = headers[currentTab].sub;
+    }
+
+    let touchStartX = 0, touchStartY = 0, isSwiping = false;
+    const SWIPE_THRESHOLD = 48;
+    const main = document.getElementById("appMain");
+
+    main.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isSwiping = false;
+    }, { passive: true });
+
+    main.addEventListener("touchmove", (e) => {
+      const dx = Math.abs(e.changedTouches[0].screenX - touchStartX);
+      const dy = Math.abs(e.changedTouches[0].screenY - touchStartY);
+      if (dx > dy && dx > 10) isSwiping = true;
+    }, { passive: true });
+
+    main.addEventListener("touchend", (e) => {
+      if (!isSwiping) return;
+      const diff = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diff) >= SWIPE_THRESHOLD) {
+        switchTab(diff < 0 ? currentTab + 1 : currentTab - 1);
+      }
+      isSwiping = false;
+    }, { passive: true });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") switchTab(currentTab - 1);
+      if (e.key === "ArrowRight") switchTab(currentTab + 1);
+    });
+
+    renderContacts();
+    renderNikList(nikKeluarga, "nikKeluargaList");
+    renderNikList(nikOrtu, "nikOrtuList");
+    updateUI();
+  </script>
+</body>
+</html>
