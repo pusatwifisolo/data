@@ -951,24 +951,35 @@ Email : ridwan.budilaksono@gmail.com`;
     }
 
     function openWhatsApp(number) {
-      let cleaned = number.replace(/\D/g, "");
+      // Buka WhatsApp langsung (app / web) tanpa meninggalkan halaman saat ini
+      let cleaned = String(number).replace(/\D/g, "");
       if (cleaned.startsWith("0")) cleaned = "62" + cleaned.slice(1);
       else if (!cleaned.startsWith("62")) cleaned = "62" + cleaned;
-      window.open("https://wa.me/" + cleaned, "_blank");
+      const url = "https://wa.me/" + cleaned;
+      try {
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (_) {
+        // Fallback: tetap buka di tab/jendela baru, jangan navigasi halaman ini
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
     }
 
-    function switchTab(index) {
-      if (isAnimating) return;
-      const next = ((index % totalTabs) + totalTabs) % totalTabs;
-      if (next === currentTab) return;
-      isAnimating = true;
-      currentTab = next;
-      updateUI();
-      setTimeout(() => { isAnimating = false; }, 290);
+    const tabsWrapper = document.getElementById("tabsWrapper");
+    const TRANSITION = "transform 280ms cubic-bezier(0.32, 0.72, 0, 1)";
+
+    function setTransform(pct, withTransition) {
+      tabsWrapper.style.transition = withTransition ? TRANSITION : "none";
+      tabsWrapper.style.transform = "translateX(" + pct + "%)";
     }
 
-    function updateUI() {
-      document.getElementById("tabsWrapper").style.transform = "translateX(-" + (currentTab * 33.3333) + "%)";
+    function updateNavAndHeader() {
       document.querySelectorAll(".nav-item").forEach((btn, i) => {
         const active = i === currentTab;
         btn.classList.toggle("active", active);
@@ -976,6 +987,59 @@ Email : ridwan.budilaksono@gmail.com`;
       });
       document.getElementById("headerTitle").textContent = headers[currentTab].title;
       document.getElementById("headerSub").textContent = headers[currentTab].sub;
+    }
+
+    function switchTab(index) {
+      if (isAnimating) return;
+      const next = ((index % totalTabs) + totalTabs) % totalTabs;
+      if (next === currentTab) return;
+
+      const prev = currentTab;
+      // Arah melingkar: +1 = maju (kiri), -1 = mundur (kanan)
+      let direction = next - prev;
+      if (direction === 2) direction = -1;   // 0 → 2 = mundur
+      if (direction === -2) direction = 1;  // 2 → 0 = maju
+
+      isAnimating = true;
+      currentTab = next;
+      updateNavAndHeader();
+
+      const isWrapForward = prev === 2 && next === 0;   // 3 → 1 (index 2 → 0)
+      const isWrapBackward = prev === 0 && next === 2; // 1 → 3 (index 0 → 2)
+
+      if (isWrapForward) {
+        // Animasi ke "panel ke-4" (-100%), lalu snap ke 0% tanpa animasi
+        setTransform(-100, true);
+        const onEnd = () => {
+          tabsWrapper.removeEventListener("transitionend", onEnd);
+          setTransform(0, false);
+          // Paksa reflow supaya transition berikutnya tetap mulus
+          void tabsWrapper.offsetWidth;
+          tabsWrapper.style.transition = TRANSITION;
+          isAnimating = false;
+        };
+        tabsWrapper.addEventListener("transitionend", onEnd);
+      } else if (isWrapBackward) {
+        // Animasi ke kanan (+33.3333%), lalu snap ke -66.6666%
+        setTransform(33.3333, true);
+        const onEnd = () => {
+          tabsWrapper.removeEventListener("transitionend", onEnd);
+          setTransform(-66.6666, false);
+          void tabsWrapper.offsetWidth;
+          tabsWrapper.style.transition = TRANSITION;
+          isAnimating = false;
+        };
+        tabsWrapper.addEventListener("transitionend", onEnd);
+      } else {
+        // Navigasi normal
+        setTransform(-(next * 33.3333), true);
+        setTimeout(() => { isAnimating = false; }, 300);
+      }
+    }
+
+    function updateUI() {
+      setTransform(-(currentTab * 33.3333), false);
+      updateNavAndHeader();
     }
 
     let touchStartX = 0, touchStartY = 0, isSwiping = false;
@@ -995,9 +1059,11 @@ Email : ridwan.budilaksono@gmail.com`;
     }, { passive: true });
 
     main.addEventListener("touchend", (e) => {
-      if (!isSwiping) return;
+      if (!isSwiping || isAnimating) return;
       const diff = e.changedTouches[0].screenX - touchStartX;
       if (Math.abs(diff) >= SWIPE_THRESHOLD) {
+        // Swipe kiri (diff < 0) → tab berikutnya (melingkar)
+        // Swipe kanan (diff > 0) → tab sebelumnya (melingkar)
         switchTab(diff < 0 ? currentTab + 1 : currentTab - 1);
       }
       isSwiping = false;
@@ -1015,3 +1081,5 @@ Email : ridwan.budilaksono@gmail.com`;
   </script>
 </body>
 </html>
+
+
