@@ -1432,6 +1432,17 @@
       updateInvoiceUI();
     }
 
+    /* Format untuk teks salinan: Rp200.000 atau -Rp8.900 (tanpa spasi) */
+    function formatRp(n) {
+      var num = Number(n);
+      if (!isFinite(num)) num = 0;
+      num = Math.round(num);
+      var neg = num < 0;
+      var abs = Math.abs(num);
+      var str = String(abs).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return neg ? ("-Rp" + str) : ("Rp" + str);
+    }
+
     function copyInvoiceDetail(btn) {
       if (btn) createRipple(btn);
 
@@ -1463,14 +1474,13 @@
         // Skip kedua baris harga, diganti 1 baris gabungan
         if (sameHarga && (key === "hargaSebelum" || key === "hargaSetelah")) {
           if (key === "hargaSebelum") {
-            lines.push("Ubah nominal harga barang menjadi Rp " + formatNumber(before));
+            lines.push("Ubah nominal harga barang menjadi " + formatRp(before));
           }
           return;
         }
 
         var label = invLabels[key];
-        var formatted = formatNumber(st.value);
-        lines.push(label + " ubah menjadi Rp " + formatted);
+        lines.push(label + " ubah menjadi " + formatRp(st.value));
       });
 
       var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominalnya saja.\n\nUbah nominal invoice menjadi:\n\n";
