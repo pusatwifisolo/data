@@ -80,7 +80,7 @@
       padding-right: env(safe-area-inset-right, 0px);
     }
 
-    /* Hide icon ligature text until Material Symbols font is ready */
+    /* Material Symbols: reserve fixed box so buttons never resize on font load */
     .material-symbols-rounded {
       font-family: 'Material Symbols Rounded', sans-serif;
       font-weight: normal;
@@ -89,7 +89,9 @@
       line-height: 1;
       letter-spacing: normal;
       text-transform: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       white-space: nowrap;
       word-wrap: normal;
       direction: ltr;
@@ -97,11 +99,25 @@
       font-feature-settings: 'liga';
       -webkit-font-smoothing: antialiased;
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      opacity: 0;
-      transition: opacity 120ms ease;
+      /* Lock size to 1em so long ligature text cannot expand the button */
+      width: 1em;
+      height: 1em;
+      min-width: 1em;
+      min-height: 1em;
+      max-width: 1em;
+      max-height: 1em;
+      overflow: hidden;
+      flex-shrink: 0;
+      /* Hide glyph text until font is ready (space already reserved) */
+      color: transparent;
+      transition: color 100ms ease;
     }
     .fonts-ready .material-symbols-rounded {
-      opacity: 1;
+      color: inherit;
+    }
+    /* Toast check icon needs explicit green when ready */
+    .fonts-ready .toast .material-symbols-rounded {
+      color: #34d399;
     }
 
     * {
@@ -641,7 +657,6 @@
     }
     .toast .material-symbols-rounded {
       font-size: 17px;
-      color: #34d399;
     }
 
     /* Desktop frame */
