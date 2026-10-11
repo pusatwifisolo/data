@@ -99,7 +99,6 @@
       font-feature-settings: 'liga';
       -webkit-font-smoothing: antialiased;
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      /* Lock size to 1em so long ligature text cannot expand the button */
       width: 1em;
       height: 1em;
       min-width: 1em;
@@ -108,14 +107,12 @@
       max-height: 1em;
       overflow: hidden;
       flex-shrink: 0;
-      /* Hide glyph text until font is ready (space already reserved) */
       color: transparent;
       transition: color 100ms ease;
     }
     .fonts-ready .material-symbols-rounded {
       color: inherit;
     }
-    /* Toast check icon needs explicit green when ready */
     .fonts-ready .toast .material-symbols-rounded {
       color: #34d399;
     }
@@ -193,7 +190,7 @@
 
     .tabs-wrapper {
       display: flex;
-      width: 300%;
+      width: 400%;
       height: 100%;
       will-change: transform;
       transform: translate3d(0, 0, 0);
@@ -201,7 +198,7 @@
     }
 
     .tab-panel {
-      width: 33.3333%;
+      width: 25%;
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
@@ -556,6 +553,154 @@
     .kk-card .btn-copy:active { background: rgba(255, 255, 255, 0.35); }
     .kk-card .btn-copy .ripple { background: rgba(255, 255, 255, 0.4); }
 
+    /* ===== INVOICE TABLE ===== */
+    .invoice-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .invoice-table thead th {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      background: rgba(241, 245, 249, 0.85);
+      padding: 8px 6px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+      white-space: nowrap;
+    }
+
+    .invoice-table thead th:nth-child(1) { width: 28px; text-align: center; padding-left: 8px; }
+    .invoice-table thead th:nth-child(2) { width: auto; }
+    .invoice-table thead th:nth-child(3) { width: 28px; text-align: center; }
+    .invoice-table thead th:nth-child(4) { width: 38%; text-align: right; padding-right: 10px; }
+
+    .invoice-table tbody tr {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      transition: background 120ms ease;
+    }
+    .invoice-table tbody tr:last-child { border-bottom: none; }
+    .invoice-table tbody tr:active { background: rgba(37, 99, 235, 0.03); }
+
+    .invoice-table td {
+      padding: 7px 6px;
+      vertical-align: middle;
+      font-size: 0.78rem;
+    }
+
+    .invoice-table td:nth-child(1) {
+      text-align: center;
+      padding-left: 8px;
+      font-weight: 650;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .invoice-table td:nth-child(2) {
+      font-weight: 550;
+      color: var(--text);
+      font-size: 0.76rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .invoice-table td:nth-child(3) {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .invoice-table td:nth-child(4) {
+      padding-right: 8px;
+      text-align: right;
+    }
+
+    .inv-input {
+      width: 100%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(248, 250, 252, 0.9);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 650;
+      color: var(--text);
+      text-align: right;
+      padding: 6px 8px;
+      border-radius: 8px;
+      outline: none;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.01em;
+      transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 34px;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
+
+    .inv-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .inv-input.is-default {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .inv-input:hover {
+      border-color: rgba(148, 163, 184, 0.45);
+      background: #fff;
+    }
+
+    .inv-input:focus {
+      background: #fff;
+      border-color: rgba(37, 99, 235, 0.45);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .inv-input.is-readonly {
+      pointer-events: none;
+      background: rgba(241, 245, 249, 0.75);
+      border-color: rgba(148, 163, 184, 0.18);
+      color: var(--text);
+      font-weight: 700;
+      box-shadow: none;
+    }
+
+    .inv-input.is-readonly.is-default {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .inv-input.negative {
+      color: #dc2626;
+    }
+
+    .inv-row-total td {
+      background: rgba(37, 99, 235, 0.04);
+      font-weight: 700;
+    }
+
+    .inv-row-total .inv-input {
+      font-weight: 750;
+      font-size: 0.84rem;
+    }
+
     /* ===== BOTTOM NAV ===== */
     .bottom-nav {
       position: fixed;
@@ -587,7 +732,7 @@
       border: none;
       color: var(--text-muted);
       font-family: inherit;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 600;
       cursor: pointer;
       transition: color 200ms var(--ease-out);
@@ -687,6 +832,9 @@
       .list-item { padding: 7px 10px; padding-left: 12px; min-height: 40px; }
       .list-item .name { font-size: 0.8rem; }
       .list-item .number { font-size: 0.7rem; }
+      .invoice-table td:nth-child(2) { font-size: 0.7rem; }
+      .inv-input { font-size: 0.74rem; padding: 4px 4px; }
+      .nav-item { font-size: 0.54rem; }
     }
 
     /* Short screens */
@@ -706,6 +854,8 @@
       .list-item { padding: 6px 12px; min-height: 38px; }
       .list-item .name { font-size: 0.8rem; margin-bottom: 0; }
       .list-item .number { font-size: 0.7rem; }
+      .invoice-table thead th { padding: 6px 5px; }
+      .invoice-table td { padding: 5px 5px; }
       :root { --nav-height: 52px; }
     }
 
@@ -727,7 +877,7 @@
       .tab-panel { padding: 4px 10px 6px; }
       :root { --nav-height: 44px; }
       .nav-item .material-symbols-rounded { font-size: 18px; }
-      .nav-item { font-size: 0.55rem; padding-top: 2px; }
+      .nav-item { font-size: 0.52rem; padding-top: 2px; }
     }
   </style>
 </head>
@@ -739,6 +889,7 @@
 
   <main class="app-main" id="appMain">
     <div class="tabs-wrapper" id="tabsWrapper">
+      <!-- TAB 0: Tagihan -->
       <section class="tab-panel" id="tab-tagihan" aria-label="Tagihan">
         <div class="card">
           <div class="card-title blue">
@@ -797,10 +948,12 @@
         </div>
       </section>
 
+      <!-- TAB 1: Kontak -->
       <section class="tab-panel" id="tab-kontak" aria-label="Kontak">
         <div class="list-group" id="contactsList"></div>
       </section>
 
+      <!-- TAB 2: NIK -->
       <section class="tab-panel" id="tab-nik" aria-label="NIK">
         <div class="card kk-card">
           <div class="card-title">
@@ -826,6 +979,77 @@
         </div>
         <div class="list-group" id="nikOrtuList"></div>
       </section>
+
+      <!-- TAB 3: Invoice -->
+      <section class="tab-panel" id="tab-invoice" aria-label="Invoice">
+        <div class="invoice-card">
+          <table class="invoice-table" aria-label="Tabel Invoice">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nama item</th>
+                <th>Rp</th>
+                <th>Nominal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Harga sebelum dicoret</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1" data-key="hargaSebelum" placeholder="0" autocomplete="off" aria-label="Harga sebelum dicoret"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Harga setelah dicoret</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2" data-key="hargaSetelah" placeholder="0" autocomplete="off" aria-label="Harga setelah dicoret"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Subtotal produk</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-3" data-key="subtotalProduk" placeholder="0" autocomplete="off" aria-label="Subtotal produk"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Subtotal pengiriman</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-4" data-key="subtotalPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal pengiriman"></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Subtotal diskon pengiriman</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-5" data-key="diskonPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal diskon pengiriman"></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Voucher shopee digunakan</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-6" data-key="voucher" placeholder="0" autocomplete="off" aria-label="Voucher shopee digunakan"></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Biaya layanan</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-7" data-key="biayaLayanan" placeholder="0" autocomplete="off" aria-label="Biaya layanan"></td>
+              </tr>
+              <tr class="inv-row-total">
+                <td>8</td>
+                <td>Total pesanan</td>
+                <td>Rp</td>
+                <td><input type="text" class="inv-input is-readonly is-default" id="inv-8" data-key="total" value="0" readonly tabindex="-1" aria-label="Total pesanan (otomatis)"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button type="button" class="btn btn-full" id="btnSalinInvoice" onclick="copyInvoiceDetail(this)" aria-label="Salin detail invoice">
+          <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+          Salin Detail
+        </button>
+      </section>
     </div>
   </main>
 
@@ -841,6 +1065,10 @@
     <button class="nav-item" role="tab" aria-selected="false" data-index="2" onclick="switchTab(2)" aria-label="NIK">
       <span class="material-symbols-rounded" aria-hidden="true">badge</span>
       NIK
+    </button>
+    <button class="nav-item" role="tab" aria-selected="false" data-index="3" onclick="switchTab(3)" aria-label="Invoice">
+      <span class="material-symbols-rounded" aria-hidden="true">receipt</span>
+      Invoice
     </button>
   </nav>
 
@@ -878,17 +1106,314 @@
     const headers = [
       { title: "Tagihan", sub: "Data tagihan penting" },
       { title: "Kontak", sub: "Nomor yang sering digunakan" },
-      { title: "NIK", sub: "Data identitas keluarga" }
+      { title: "NIK", sub: "Data identitas keluarga" },
+      { title: "Invoice", sub: "Bebas ubah invoice" }
     ];
 
     let currentTab = 0;
-    const totalTabs = 3;
+    const totalTabs = 4;
     let toastTimer = null;
     let isAnimating = false;
 
     const TAB_DURATION = 280;
     const TRANSITION = "transform " + TAB_DURATION + "ms cubic-bezier(0.32, 0.72, 0, 1)";
 
+    /* ===== INVOICE STATE ===== */
+    const invState = {
+      hargaSebelum: { value: 0, manual: false },
+      hargaSetelah: { value: 0, manual: false },
+      subtotalProduk: { value: 0, manual: false },
+      subtotalPengiriman: { value: 0, manual: false },
+      diskonPengiriman: { value: 0, manual: false },
+      voucher: { value: 0, manual: false },
+      biayaLayanan: { value: 0, manual: false },
+      total: { value: 0, manual: false }
+    };
+
+    const invLabels = {
+      hargaSebelum: "Harga sebelum dicoret",
+      hargaSetelah: "Harga setelah dicoret",
+      subtotalProduk: "Subtotal produk",
+      subtotalPengiriman: "Subtotal pengiriman",
+      diskonPengiriman: "Subtotal diskon pengiriman",
+      voucher: "Voucher shopee digunakan",
+      biayaLayanan: "Biaya layanan",
+      total: "Total pesanan"
+    };
+
+    function formatNumber(n) {
+      const num = Number(n) || 0;
+      const neg = num < 0;
+      const abs = Math.abs(Math.round(num));
+      const str = String(abs).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return neg ? "-" + str : str;
+    }
+
+    function parseNumber(str) {
+      if (str === null || str === undefined) return 0;
+      const s = String(str).trim();
+      if (!s) return 0;
+      // keep only digits and leading minus
+      let cleaned = s.replace(/[^\d\-]/g, "");
+      // only allow minus at the very start
+      if (cleaned.indexOf("-") > 0) cleaned = cleaned.replace(/-/g, "");
+      if (cleaned === "" || cleaned === "-") return 0;
+      const n = parseInt(cleaned, 10);
+      return isNaN(n) ? 0 : n;
+    }
+
+    const invIdMap = {
+      "inv-1": "hargaSebelum",
+      "inv-2": "hargaSetelah",
+      "inv-3": "subtotalProduk",
+      "inv-4": "subtotalPengiriman",
+      "inv-5": "diskonPengiriman",
+      "inv-6": "voucher",
+      "inv-7": "biayaLayanan",
+      "inv-8": "total"
+    };
+
+    function recalculate() {
+      // Auto: harga setelah dicoret = harga sebelum dicoret
+      // (hanya jika harga sebelum != 0 dan harga setelah belum diisi manual)
+      if (!invState.hargaSetelah.manual && invState.hargaSebelum.value !== 0) {
+        invState.hargaSetelah.value = invState.hargaSebelum.value;
+      }
+
+      // Auto: subtotal produk = harga setelah (jika belum manual)
+      if (!invState.subtotalProduk.manual) {
+        invState.subtotalProduk.value = invState.hargaSetelah.value;
+      }
+      // Auto: diskon pengiriman = -subtotal pengiriman (jika belum manual)
+      if (!invState.diskonPengiriman.manual) {
+        invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
+      }
+      // Total always calculated
+      invState.total.value =
+        invState.subtotalProduk.value +
+        invState.subtotalPengiriman.value +
+        invState.diskonPengiriman.value +
+        invState.voucher.value +
+        invState.biayaLayanan.value;
+    }
+
+    function renderField(id, key) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      // Jangan timpa saat user sedang mengetik di field ini
+      if (document.activeElement === el) return;
+
+      const st = invState[key];
+      const isZero = st.value === 0;
+      el.value = formatNumber(st.value);
+      el.classList.toggle("is-default", isZero);
+      el.classList.toggle("negative", st.value < 0);
+      if (key === "total") {
+        el.classList.add("is-readonly");
+      }
+    }
+
+    function updateInvoiceUI() {
+      recalculate();
+      Object.keys(invIdMap).forEach(function (id) {
+        renderField(id, invIdMap[id]);
+      });
+    }
+
+    function syncStateFromInputs() {
+      // Baca nilai aktual dari DOM agar salinan selalu akurat
+      // Hanya update .value — flag .manual tidak diubah di sini
+      Object.keys(invIdMap).forEach(function (id) {
+        const key = invIdMap[id];
+        if (key === "total") return;
+        const el = document.getElementById(id);
+        if (!el) return;
+        var num = parseNumber(el.value);
+        // Voucher Shopee selalu negatif
+        if (key === "voucher" && num > 0) num = -num;
+        invState[key].value = num;
+      });
+      recalculate();
+    }
+
+    function onInvInput(e) {
+      const el = e.target;
+      const key = el.dataset.key;
+      if (!key || key === "total") return;
+
+      var num = parseNumber(el.value);
+
+      // Voucher Shopee selalu negatif (kecuali 0)
+      if (key === "voucher" && num > 0) {
+        num = -num;
+      }
+
+      invState[key].value = num;
+      invState[key].manual = true;
+
+      // Cascade: harga sebelum → harga setelah (jika belum manual & sebelum != 0)
+      if (key === "hargaSebelum") {
+        if (!invState.hargaSetelah.manual && num !== 0) {
+          invState.hargaSetelah.value = num;
+        }
+      }
+      // Cascade: harga setelah → subtotal produk
+      if (key === "hargaSetelah" && !invState.subtotalProduk.manual) {
+        invState.subtotalProduk.value = num;
+      }
+      // Cascade: subtotal pengiriman → diskon pengiriman
+      if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
+        invState.diskonPengiriman.value = num * -1;
+      }
+
+      // Format ribuan langsung saat mengetik
+      var formatted = formatNumber(num);
+      // Hitung posisi kursor relatif terhadap digit
+      var oldVal = el.value;
+      var cursorPos = el.selectionStart || 0;
+      var digitsBefore = oldVal.slice(0, cursorPos).replace(/[^\d\-]/g, "").length;
+
+      if (el.value !== formatted) {
+        el.value = formatted;
+        // Restore kursor setelah digit yang sama
+        var newPos = 0;
+        var digitCount = 0;
+        for (var i = 0; i < formatted.length; i++) {
+          if (/[\d\-]/.test(formatted[i])) digitCount++;
+          if (digitCount >= digitsBefore) {
+            newPos = i + 1;
+            break;
+          }
+        }
+        if (digitCount < digitsBefore) newPos = formatted.length;
+        try { el.setSelectionRange(newPos, newPos); } catch (_) {}
+      }
+
+      el.classList.toggle("is-default", num === 0);
+      el.classList.toggle("negative", num < 0);
+
+      // Update field lain (bukan yang sedang diketik)
+      recalculate();
+      Object.keys(invIdMap).forEach(function (id) {
+        const k = invIdMap[id];
+        if (k === key) return;
+        renderField(id, k);
+      });
+    }
+
+    function onInvFocus(e) {
+      const el = e.target;
+      if (el.classList.contains("is-readonly")) return;
+      setTimeout(function () {
+        try { el.select(); } catch (_) {}
+      }, 0);
+    }
+
+    function onInvBlur(e) {
+      const el = e.target;
+      const key = el.dataset.key;
+      if (!key || key === "total") return;
+
+      const raw = el.value.trim();
+      if (raw === "" || raw === "0" || raw === "-" || raw === "-0") {
+        invState[key].value = 0;
+        invState[key].manual = false;
+        // Kembalikan ke mode auto
+        if (key === "hargaSetelah") {
+          if (invState.hargaSebelum.value !== 0) {
+            invState.hargaSetelah.value = invState.hargaSebelum.value;
+          }
+        }
+        if (key === "subtotalProduk") {
+          invState.subtotalProduk.value = invState.hargaSetelah.value;
+        }
+        if (key === "diskonPengiriman") {
+          invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
+        }
+      } else {
+        var num = parseNumber(raw);
+        // Voucher selalu negatif
+        if (key === "voucher" && num > 0) num = -num;
+        invState[key].value = num;
+        invState[key].manual = true;
+      }
+      // Format rapi setelah blur
+      updateInvoiceUI();
+    }
+
+    function initInvoiceInputs() {
+      const ids = ["inv-1", "inv-2", "inv-3", "inv-4", "inv-5", "inv-6", "inv-7"];
+      ids.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("input", onInvInput);
+        el.addEventListener("focus", onInvFocus);
+        el.addEventListener("blur", onInvBlur);
+        el.addEventListener("keydown", function (ev) {
+          var allowed = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Home", "End", "Enter"];
+          if (allowed.indexOf(ev.key) !== -1) return;
+          if (ev.key === "-" && el.selectionStart === 0 && el.value.indexOf("-") === -1) return;
+          if (/^\d$/.test(ev.key)) return;
+          if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+          ev.preventDefault();
+        });
+      });
+      updateInvoiceUI();
+    }
+
+    function copyInvoiceDetail(btn) {
+      if (btn) createRipple(btn);
+
+      // Selalu sinkronkan dari input aktual sebelum generate teks
+      syncStateFromInputs();
+      updateInvoiceUI();
+
+      var before = invState.hargaSebelum.value;
+      var after = invState.hargaSetelah.value;
+      // Jika harga sebelum & setelah sama dan bukan 0 → gabung jadi 1 baris
+      var sameHarga = (before !== 0 && after !== 0 && before === after);
+
+      var order = [
+        "hargaSebelum",
+        "hargaSetelah",
+        "subtotalProduk",
+        "subtotalPengiriman",
+        "diskonPengiriman",
+        "voucher",
+        "biayaLayanan",
+        "total"
+      ];
+
+      var lines = [];
+      order.forEach(function (key) {
+        var st = invState[key];
+        if (!st || st.value === 0) return;
+
+        // Skip kedua baris harga, diganti 1 baris gabungan
+        if (sameHarga && (key === "hargaSebelum" || key === "hargaSetelah")) {
+          if (key === "hargaSebelum") {
+            lines.push("Ubah nominal harga barang menjadi Rp " + formatNumber(before));
+          }
+          return;
+        }
+
+        var label = invLabels[key];
+        var formatted = formatNumber(st.value);
+        lines.push(label + " ubah menjadi Rp " + formatted);
+      });
+
+      var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominalnya saja.\n\nUbah nominal invoice menjadi:\n\n";
+      if (lines.length === 0) {
+        text += "(Belum ada nominal yang diisi)\n\n";
+      } else {
+        text += lines.join("\n\n") + "\n\n";
+      }
+      text += "Tingkatkan kualitas, tingkatkan kontras, tapi buat font type, font size dan font color sama persis dan pastikan tidak tampak kalau sudah diedit invoice ini.";
+
+      copyText(text, btn);
+    }
+
+    /* ===== EXISTING HELPERS ===== */
     function renderContacts() {
       const container = document.getElementById("contactsList");
       container.innerHTML = contacts.map((c) => `
@@ -946,38 +1471,55 @@
         createRipple(btn, e);
         try { btn.blur(); } catch (_) {}
       }
+      if (!text) {
+        showToast("Tidak ada data");
+        return;
+      }
+
+      // Prefer modern Clipboard API when available (HTTPS / localhost)
       if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-        navigator.clipboard.writeText(text).then(() => {
+        navigator.clipboard.writeText(text).then(function () {
           showToast("Berhasil disalin");
-        }).catch(() => fallbackCopy(text));
+        }).catch(function () {
+          fallbackCopy(text);
+        });
       } else {
         fallbackCopy(text);
       }
     }
 
     function fallbackCopy(text) {
-      const ta = document.createElement("textarea");
+      var ta = document.createElement("textarea");
       ta.value = text;
+      // Harus bisa di-focus & di-select agar execCommand('copy') bekerja di mobile
       ta.setAttribute("readonly", "");
-      ta.setAttribute("tabindex", "-1");
-      ta.setAttribute("aria-hidden", "true");
-      ta.setAttribute("inputmode", "none");
-      ta.style.cssText = "position:fixed;left:-9999px;top:0;width:1px;height:1px;padding:0;margin:0;opacity:0;border:0;font-size:16px;pointer-events:none;";
+      ta.style.cssText = "position:fixed;top:0;left:0;width:2em;height:2em;padding:0;margin:0;border:none;outline:none;box-shadow:none;background:transparent;opacity:0.01;z-index:99999;font-size:16px;";
       document.body.appendChild(ta);
+
+      var ok = false;
       try {
-        const range = document.createRange();
-        range.selectNodeContents(ta);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        try { ta.setSelectionRange(0, text.length); } catch (_) {}
-        const ok = document.execCommand("copy");
-        sel.removeAllRanges();
-        showToast(ok ? "Berhasil disalin" : "Gagal menyalin");
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        ok = document.execCommand("copy");
       } catch (err) {
-        showToast("Gagal menyalin");
+        ok = false;
       }
-      document.body.removeChild(ta);
+
+      // Bersihkan
+      try { document.body.removeChild(ta); } catch (_) {}
+
+      if (ok) {
+        showToast("Berhasil disalin");
+      } else {
+        // Last resort: prompt agar user bisa salin manual
+        try {
+          window.prompt("Salin teks di bawah ini (Ctrl+C / Cmd+C):", text);
+          showToast("Salin manual dari kotak dialog");
+        } catch (_) {
+          showToast("Gagal menyalin");
+        }
+      }
     }
 
     function copyDetailXL(btn) {
@@ -1042,10 +1584,12 @@ Email : ridwan.budilaksono@gmail.com`;
       currentTab = next;
       updateNavAndHeader();
 
-      const isWrapForward = prev === 2 && next === 0;
-      const isWrapBackward = prev === 0 && next === 2;
+      // 4 tabs: positions 0, -25, -50, -75
+      const isWrapForward = prev === 3 && next === 0;
+      const isWrapBackward = prev === 0 && next === 3;
 
       if (isWrapForward) {
+        // animate to a temporary -100% then snap to 0
         setTransform(-100, true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
@@ -1056,19 +1600,22 @@ Email : ridwan.budilaksono@gmail.com`;
           isAnimating = false;
         };
         tabsWrapper.addEventListener("transitionend", onEnd);
+        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
       } else if (isWrapBackward) {
-        setTransform(33.3333, true);
+        // animate to +25% then snap to -75%
+        setTransform(25, true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
-          setTransform(-66.6666, false);
+          setTransform(-75, false);
           void tabsWrapper.offsetWidth;
           tabsWrapper.style.transition = TRANSITION;
           isAnimating = false;
         };
         tabsWrapper.addEventListener("transitionend", onEnd);
+        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
       } else {
-        setTransform(-(next * 33.3333), true);
+        setTransform(-(next * 25), true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
@@ -1080,7 +1627,7 @@ Email : ridwan.budilaksono@gmail.com`;
     }
 
     function updateUI() {
-      setTransform(-(currentTab * 33.3333), false);
+      setTransform(-(currentTab * 25), false);
       updateNavAndHeader();
     }
 
@@ -1114,7 +1661,7 @@ Email : ridwan.budilaksono@gmail.com`;
       if (e.key === "ArrowRight") switchTab(currentTab + 1);
     });
 
-    // Reveal icons only after Material Symbols font is ready (prevents text flash)
+    // Reveal icons only after Material Symbols font is ready
     function revealIcons() {
       document.documentElement.classList.add("fonts-ready");
     }
@@ -1125,10 +1672,11 @@ Email : ridwan.budilaksono@gmail.com`;
       revealIcons();
     }
 
-    // Render lists immediately so content is ready on first paint
+    // Init
     renderContacts();
     renderNikList(nikKeluarga, "nikKeluargaList");
     renderNikList(nikOrtu, "nikOrtuList");
+    initInvoiceInputs();
     updateUI();
   </script>
 </body>
