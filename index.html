@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-50..200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-50..200&display=block" rel="stylesheet">
   <style>
     :root {
       --bg: #f1f5f9;
@@ -41,6 +41,8 @@
       --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
       --shadow-glow: 0 4px 20px rgba(37, 99, 235, 0.22);
       --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.35, 0.64, 1);
     }
 
     *, *::before, *::after {
@@ -76,6 +78,30 @@
       padding-top: env(safe-area-inset-top, 0px);
       padding-left: env(safe-area-inset-left, 0px);
       padding-right: env(safe-area-inset-right, 0px);
+    }
+
+    /* Hide icon ligature text until Material Symbols font is ready */
+    .material-symbols-rounded {
+      font-family: 'Material Symbols Rounded', sans-serif;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      opacity: 0;
+      transition: opacity 120ms ease;
+    }
+    .fonts-ready .material-symbols-rounded {
+      opacity: 1;
     }
 
     * {
@@ -153,8 +179,9 @@
       display: flex;
       width: 300%;
       height: 100%;
-      transition: transform 280ms cubic-bezier(0.32, 0.72, 0, 1);
       will-change: transform;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
     }
 
     .tab-panel {
@@ -176,6 +203,7 @@
       padding: 9px 12px;
       margin-bottom: 7px;
       box-shadow: var(--shadow);
+      transition: box-shadow 180ms ease, border-color 180ms ease;
     }
 
     .card-title {
@@ -268,7 +296,7 @@
       font-size: 0.74rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 150ms ease, box-shadow 150ms ease;
+      transition: background 150ms ease, box-shadow 150ms ease, transform 80ms ease;
       min-height: 32px;
       min-width: 32px;
       padding: 0 9px;
@@ -281,8 +309,7 @@
     }
 
     .btn:active {
-      transform: scale(0.92);
-      transition: transform 80ms ease;
+      transform: scale(0.94);
     }
 
     .btn:focus { outline: none; }
@@ -333,14 +360,14 @@
       border-radius: 50%;
       background: rgba(37, 99, 235, 0.25);
       transform: scale(0);
-      animation: ripple-anim 450ms ease-out;
+      animation: ripple-anim 420ms var(--ease-out);
       pointer-events: none;
     }
     .btn-dm .ripple { background: rgba(5, 150, 105, 0.3); }
     .btn-full .ripple { background: rgba(255, 255, 255, 0.35); }
 
     @keyframes ripple-anim {
-      to { transform: scale(2.8); opacity: 0; }
+      to { transform: scale(2.6); opacity: 0; }
     }
 
     /* ===== DETAIL ===== */
@@ -374,7 +401,7 @@
       user-select: text;
     }
 
-    /* ===== CONTACT / NIK LIST — clean, no avatar squares ===== */
+    /* ===== CONTACT / NIK LIST ===== */
     .list-group {
       background: var(--surface);
       border: 1px solid var(--border-light);
@@ -396,11 +423,18 @@
       margin: 0;
       box-shadow: none;
       border-radius: 0;
-      min-height: 44px; /* comfortable touch row */
+      min-height: 44px;
+      position: relative;
+      padding-left: 14px;
+      transition: background 120ms ease;
     }
 
     .list-item:last-child {
       border-bottom: none;
+    }
+
+    .list-item:active {
+      background: rgba(37, 99, 235, 0.04);
     }
 
     .list-item .name {
@@ -420,12 +454,6 @@
       user-select: text;
     }
 
-    /* subtle left accent bar for visual separation */
-    .list-item {
-      position: relative;
-      padding-left: 14px;
-    }
-
     .list-item::before {
       content: '';
       position: absolute;
@@ -440,7 +468,7 @@
     }
 
     .list-item:active::before {
-      opacity: 0.7;
+      opacity: 0.75;
     }
 
     /* ===== KK CARD ===== */
@@ -522,7 +550,7 @@
       margin: 0 auto;
       height: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
       padding-bottom: env(safe-area-inset-bottom, 0px);
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(24px) saturate(1.5);
       -webkit-backdrop-filter: blur(24px) saturate(1.5);
       border-top: 1px solid var(--border);
@@ -546,7 +574,7 @@
       font-size: 0.6rem;
       font-weight: 600;
       cursor: pointer;
-      transition: color var(--transition);
+      transition: color 200ms var(--ease-out);
       position: relative;
       padding-top: 5px;
       user-select: none;
@@ -554,14 +582,14 @@
 
     .nav-item .material-symbols-rounded {
       font-size: 20px;
-      transition: transform 200ms cubic-bezier(0.34, 1.4, 0.64, 1), font-variation-settings 200ms ease, color 200ms ease;
+      transition: transform 240ms var(--ease-spring), font-variation-settings 200ms ease, color 200ms ease;
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
 
     .nav-item.active { color: var(--primary); }
     .nav-item.active .material-symbols-rounded {
       font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-      transform: translateY(-2px) scale(1.05);
+      transform: translateY(-2px) scale(1.06);
     }
 
     .nav-item::after {
@@ -574,10 +602,10 @@
       height: 2.5px;
       border-radius: 0 0 3px 3px;
       background: linear-gradient(90deg, #1e40af, #0ea5e9);
-      transition: transform 220ms cubic-bezier(0.34, 1.4, 0.64, 1);
+      transition: transform 240ms var(--ease-spring);
     }
     .nav-item.active::after { transform: translateX(-50%) scaleX(1); }
-    .nav-item:active { opacity: 0.65; }
+    .nav-item:active { opacity: 0.7; }
     .nav-item:focus-visible {
       outline: 2px solid var(--primary);
       outline-offset: -2px;
@@ -588,7 +616,7 @@
       position: fixed;
       bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 12px);
       left: 50%;
-      transform: translateX(-50%) translateY(20px) scale(0.96);
+      transform: translateX(-50%) translateY(16px) scale(0.96);
       background: #0f172a;
       color: #f8fafc;
       border: none;
@@ -602,7 +630,7 @@
       box-shadow: 0 12px 36px rgba(15, 23, 42, 0.3);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 200ms ease, transform 220ms cubic-bezier(0.34, 1.4, 0.64, 1);
+      transition: opacity 200ms var(--ease-out), transform 240ms var(--ease-spring);
       z-index: 200;
       white-space: nowrap;
       max-width: calc(100% - 28px);
@@ -646,7 +674,7 @@
       .list-item .number { font-size: 0.7rem; }
     }
 
-    /* Short screens — pack content so less scrolling */
+    /* Short screens */
     @media (max-height: 720px) {
       .app-header { padding: 8px 14px 6px; }
       .app-header h1 { font-size: 1.1rem; }
@@ -666,7 +694,7 @@
       :root { --nav-height: 52px; }
     }
 
-    /* Very short (SE / small Android) */
+    /* Very short */
     @media (max-height: 600px) {
       .app-header { padding: 6px 12px 5px; }
       .tab-panel { padding: 4px 10px 8px; }
@@ -677,7 +705,7 @@
       :root { --nav-height: 48px; }
     }
 
-    /* Landscape phones — keep usable */
+    /* Landscape phones */
     @media (max-height: 420px) and (orientation: landscape) {
       .app-header { padding: 4px 12px; }
       .app-header p { display: none; }
@@ -699,14 +727,14 @@
       <section class="tab-panel" id="tab-tagihan" aria-label="Tagihan">
         <div class="card">
           <div class="card-title blue">
-            <span class="material-symbols-rounded">bolt</span>
+            <span class="material-symbols-rounded" aria-hidden="true">bolt</span>
             Token Listrik
           </div>
           <div class="card-label">Tegal Makmur</div>
           <div class="card-row" style="margin-top:5px">
             <div class="card-value large">14384251667</div>
             <button type="button" class="btn btn-copy" onclick="copyText('14384251667', this)" aria-label="Salin token listrik">
-              <span class="material-symbols-rounded">content_copy</span>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
               Salin
             </button>
           </div>
@@ -714,20 +742,20 @@
 
         <div class="card">
           <div class="card-title sky">
-            <span class="material-symbols-rounded">sim_card</span>
+            <span class="material-symbols-rounded" aria-hidden="true">sim_card</span>
             XL SATU
           </div>
           <div class="card-label">ID Pelanggan</div>
           <div class="card-row" style="margin-top:5px">
             <div class="card-value large">11832647</div>
             <button type="button" class="btn btn-copy" onclick="copyText('11832647', this)" aria-label="Salin ID Pelanggan XL SATU">
-              <span class="material-symbols-rounded">content_copy</span>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
               Salin
             </button>
           </div>
           <div class="detail-block">
             <div class="card-title purple" style="margin-bottom:5px">
-              <span class="material-symbols-rounded">info</span>
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
               Detail
             </div>
             <div class="detail-row">
@@ -747,7 +775,7 @@
               <span class="detail-val">ridwan.budilaksono@gmail.com</span>
             </div>
             <button type="button" class="btn btn-full" onclick="copyDetailXL(this)" aria-label="Salin seluruh detail XL SATU">
-              <span class="material-symbols-rounded">content_copy</span>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
               Salin Detail
             </button>
           </div>
@@ -761,24 +789,24 @@
       <section class="tab-panel" id="tab-nik" aria-label="NIK">
         <div class="card kk-card">
           <div class="card-title">
-            <span class="material-symbols-rounded">family_restroom</span>
+            <span class="material-symbols-rounded" aria-hidden="true">family_restroom</span>
             Kartu Keluarga
           </div>
           <div class="card-value large">3372050809210001</div>
           <button type="button" class="btn btn-copy" onclick="copyText('3372050809210001', this)" aria-label="Salin nomor Kartu Keluarga">
-            <span class="material-symbols-rounded">content_copy</span>
+            <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
             Salin
           </button>
         </div>
 
         <div class="section-title">
-          <span class="material-symbols-rounded">groups</span>
+          <span class="material-symbols-rounded" aria-hidden="true">groups</span>
           NIK Keluarga
         </div>
         <div class="list-group" id="nikKeluargaList"></div>
 
         <div class="section-title">
-          <span class="material-symbols-rounded">elderly</span>
+          <span class="material-symbols-rounded" aria-hidden="true">elderly</span>
           NIK Orang Tua
         </div>
         <div class="list-group" id="nikOrtuList"></div>
@@ -788,21 +816,21 @@
 
   <nav class="bottom-nav" role="tablist" aria-label="Navigasi utama">
     <button class="nav-item active" role="tab" aria-selected="true" data-index="0" onclick="switchTab(0)" aria-label="Tagihan">
-      <span class="material-symbols-rounded">receipt_long</span>
+      <span class="material-symbols-rounded" aria-hidden="true">receipt_long</span>
       Tagihan
     </button>
     <button class="nav-item" role="tab" aria-selected="false" data-index="1" onclick="switchTab(1)" aria-label="Kontak">
-      <span class="material-symbols-rounded">contacts</span>
+      <span class="material-symbols-rounded" aria-hidden="true">contacts</span>
       Kontak
     </button>
     <button class="nav-item" role="tab" aria-selected="false" data-index="2" onclick="switchTab(2)" aria-label="NIK">
-      <span class="material-symbols-rounded">badge</span>
+      <span class="material-symbols-rounded" aria-hidden="true">badge</span>
       NIK
     </button>
   </nav>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
-    <span class="material-symbols-rounded">check_circle</span>
+    <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
     <span id="toastMsg">Berhasil disalin</span>
   </div>
 
@@ -843,6 +871,9 @@
     let toastTimer = null;
     let isAnimating = false;
 
+    const TAB_DURATION = 280;
+    const TRANSITION = "transform " + TAB_DURATION + "ms cubic-bezier(0.32, 0.72, 0, 1)";
+
     function renderContacts() {
       const container = document.getElementById("contactsList");
       container.innerHTML = contacts.map((c) => `
@@ -853,10 +884,10 @@
           </div>
           <div class="card-actions">
             <button type="button" class="btn btn-copy" onclick="copyText('${c.number}', this)" aria-label="Salin nomor ${c.name}" title="Salin">
-              <span class="material-symbols-rounded">content_copy</span>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
             </button>
             <button type="button" class="btn btn-dm" onclick="openWhatsApp('${c.number}')" aria-label="Kirim WhatsApp ke ${c.name}" title="WhatsApp">
-              <span class="material-symbols-rounded">send</span>
+              <span class="material-symbols-rounded" aria-hidden="true">send</span>
             </button>
           </div>
         </div>
@@ -873,7 +904,7 @@
           </div>
           <div class="card-actions">
             <button type="button" class="btn btn-copy" onclick="copyText('${item.nik}', this)" aria-label="Salin NIK ${item.name}" title="Salin">
-              <span class="material-symbols-rounded">content_copy</span>
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
             </button>
           </div>
         </div>
@@ -951,7 +982,6 @@ Email : ridwan.budilaksono@gmail.com`;
     }
 
     function openWhatsApp(number) {
-      // Buka WhatsApp langsung (app / web) tanpa meninggalkan halaman saat ini
       let cleaned = String(number).replace(/\D/g, "");
       if (cleaned.startsWith("0")) cleaned = "62" + cleaned.slice(1);
       else if (!cleaned.startsWith("62")) cleaned = "62" + cleaned;
@@ -966,17 +996,15 @@ Email : ridwan.budilaksono@gmail.com`;
         a.click();
         document.body.removeChild(a);
       } catch (_) {
-        // Fallback: tetap buka di tab/jendela baru, jangan navigasi halaman ini
         window.open(url, "_blank", "noopener,noreferrer");
       }
     }
 
     const tabsWrapper = document.getElementById("tabsWrapper");
-    const TRANSITION = "transform 280ms cubic-bezier(0.32, 0.72, 0, 1)";
 
     function setTransform(pct, withTransition) {
       tabsWrapper.style.transition = withTransition ? TRANSITION : "none";
-      tabsWrapper.style.transform = "translateX(" + pct + "%)";
+      tabsWrapper.style.transform = "translate3d(" + pct + "%, 0, 0)";
     }
 
     function updateNavAndHeader() {
@@ -995,34 +1023,28 @@ Email : ridwan.budilaksono@gmail.com`;
       if (next === currentTab) return;
 
       const prev = currentTab;
-      // Arah melingkar: +1 = maju (kiri), -1 = mundur (kanan)
-      let direction = next - prev;
-      if (direction === 2) direction = -1;   // 0 → 2 = mundur
-      if (direction === -2) direction = 1;  // 2 → 0 = maju
-
       isAnimating = true;
       currentTab = next;
       updateNavAndHeader();
 
-      const isWrapForward = prev === 2 && next === 0;   // 3 → 1 (index 2 → 0)
-      const isWrapBackward = prev === 0 && next === 2; // 1 → 3 (index 0 → 2)
+      const isWrapForward = prev === 2 && next === 0;
+      const isWrapBackward = prev === 0 && next === 2;
 
       if (isWrapForward) {
-        // Animasi ke "panel ke-4" (-100%), lalu snap ke 0% tanpa animasi
         setTransform(-100, true);
-        const onEnd = () => {
+        const onEnd = (e) => {
+          if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
           setTransform(0, false);
-          // Paksa reflow supaya transition berikutnya tetap mulus
           void tabsWrapper.offsetWidth;
           tabsWrapper.style.transition = TRANSITION;
           isAnimating = false;
         };
         tabsWrapper.addEventListener("transitionend", onEnd);
       } else if (isWrapBackward) {
-        // Animasi ke kanan (+33.3333%), lalu snap ke -66.6666%
         setTransform(33.3333, true);
-        const onEnd = () => {
+        const onEnd = (e) => {
+          if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
           setTransform(-66.6666, false);
           void tabsWrapper.offsetWidth;
@@ -1031,9 +1053,14 @@ Email : ridwan.budilaksono@gmail.com`;
         };
         tabsWrapper.addEventListener("transitionend", onEnd);
       } else {
-        // Navigasi normal
         setTransform(-(next * 33.3333), true);
-        setTimeout(() => { isAnimating = false; }, 300);
+        const onEnd = (e) => {
+          if (e.propertyName !== "transform") return;
+          tabsWrapper.removeEventListener("transitionend", onEnd);
+          isAnimating = false;
+        };
+        tabsWrapper.addEventListener("transitionend", onEnd);
+        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 40);
       }
     }
 
@@ -1062,8 +1089,6 @@ Email : ridwan.budilaksono@gmail.com`;
       if (!isSwiping || isAnimating) return;
       const diff = e.changedTouches[0].screenX - touchStartX;
       if (Math.abs(diff) >= SWIPE_THRESHOLD) {
-        // Swipe kiri (diff < 0) → tab berikutnya (melingkar)
-        // Swipe kanan (diff > 0) → tab sebelumnya (melingkar)
         switchTab(diff < 0 ? currentTab + 1 : currentTab - 1);
       }
       isSwiping = false;
@@ -1074,6 +1099,18 @@ Email : ridwan.budilaksono@gmail.com`;
       if (e.key === "ArrowRight") switchTab(currentTab + 1);
     });
 
+    // Reveal icons only after Material Symbols font is ready (prevents text flash)
+    function revealIcons() {
+      document.documentElement.classList.add("fonts-ready");
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(revealIcons).catch(revealIcons);
+      setTimeout(revealIcons, 1200);
+    } else {
+      revealIcons();
+    }
+
+    // Render lists immediately so content is ready on first paint
     renderContacts();
     renderNikList(nikKeluarga, "nikKeluargaList");
     renderNikList(nikOrtu, "nikOrtuList");
@@ -1081,5 +1118,3 @@ Email : ridwan.budilaksono@gmail.com`;
   </script>
 </body>
 </html>
-
-
