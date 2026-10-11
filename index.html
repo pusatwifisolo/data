@@ -1199,7 +1199,7 @@
     };
 
     /* Field yang nilainya selalu disimpan/ditampilkan negatif */
-    const FORCE_NEGATIVE = { voucher: true };
+    const FORCE_NEGATIVE = { voucher: true, diskonPengiriman: true };
 
     function applyForceSign(key, num) {
       if (!FORCE_NEGATIVE[key]) return num;
@@ -1334,20 +1334,26 @@
       if (isEmpty) {
         invState[key].value = 0;
         invState[key].manual = false;
-        if (key === "hargaSetelah" && invState.hargaSebelum.value !== 0) {
-          invState.hargaSetelah.value = invState.hargaSebelum.value;
-        }
-        if (key === "subtotalProduk") {
-          invState.subtotalProduk.value = invState.hargaSetelah.value;
-        }
-        if (key === "diskonPengiriman") {
-          invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
-        }
       } else {
         var num = applyForceSign(key, parseNumber(raw));
         invState[key].value = num;
-        invState[key].manual = true;
+
+        // Tentukan apakah masih "auto" atau benar-benar manual
+        if (key === "hargaSetelah") {
+          // Auto jika sama dengan harga sebelum (dan sebelum != 0)
+          invState[key].manual = !(invState.hargaSebelum.value !== 0 && num === invState.hargaSebelum.value);
+        } else if (key === "subtotalProduk") {
+          invState[key].manual = (num !== invState.hargaSetelah.value);
+        } else if (key === "diskonPengiriman") {
+          // Auto jika sama dengan -subtotal pengiriman
+          var expected = invState.subtotalPengiriman.value * -1;
+          invState[key].manual = (num !== expected);
+        } else {
+          invState[key].manual = true;
+        }
       }
+
+      // Setelah blur, jalankan ulang cascade auto untuk field yang non-manual
       updateInvoiceUI();
     }
 
