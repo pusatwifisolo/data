@@ -1664,13 +1664,13 @@
         lines.push(invLabels[key] + " ubah menjadi " + formatRp(st.value));
       });
 
-      var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominalnya saja.\n\nUbah Nominal Invoice Menjadi:\n\n";
+      var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominal dan nama tokonya saja jika aku ada perintah ubah nama toko.\n\nUbah Nominal Invoice Menjadi:\n\n";
       if (lines.length === 0) {
         text += "(Belum ada nominal yang diisi)\n\n";
       } else {
         text += lines.join("\n\n") + "\n\n";
       }
-      text += "Tingkatkan kualitas, tingkatkan kontras, tapi buat font type, font size dan font color sama persis dan pastikan tidak tampak kalau sudah diedit invoice ini.";
+      text += "Tanpa sedikitpun merubah dimensi gambar, tingkatkan kualitas, tingkatkan kontras, tapi buat font type, font size dan font color sama persis dan pastikan tidak tampak kalau sudah diedit invoice ini.";
 
       copyText(text, btn);
     }
