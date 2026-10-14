@@ -143,19 +143,31 @@
       letter-spacing: 0.01em;
     }
 
+    /* BADGE INTERAKTIF PUSAT DATA */
     .header-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 4px;
       padding: 4px 9px;
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(14, 165, 233, 0.08));
-      border: 1px solid rgba(37, 99, 235, 0.16);
+      border: 1px solid rgba(37, 99, 235, 0.18);
       border-radius: 20px;
       color: var(--primary-deep);
       font-size: 0.58rem;
       font-weight: 750;
       letter-spacing: 0.03em;
       box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      transition: transform 120ms var(--ease-smooth), background 150ms ease, box-shadow 150ms ease;
+    }
+
+    .header-badge:active {
+      transform: scale(0.92);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(14, 165, 233, 0.18));
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
     }
 
     .header-badge .material-symbols-rounded {
@@ -296,7 +308,6 @@
       background: rgba(37, 99, 235, 0.22);
     }
 
-    /* Green success pulse state when copied */
     .btn-copy.copied-state {
       background: #059669 !important;
       color: #ffffff !important;
@@ -534,6 +545,12 @@
       outline: none;
       min-height: 22px;
       font-variant-numeric: tabular-nums;
+      transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+    }
+    .inv-input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
     }
     .inv-input.is-default { color: var(--text-muted); font-weight: 500; }
     .inv-input.is-readonly { pointer-events: none; background: rgba(241, 245, 249, 0.75); font-weight: 700; }
@@ -572,7 +589,6 @@
       color: var(--primary);
       margin-bottom: 1.5px;
     }
-    /* Solid 1 color dark text (#0f172a) without any color background overlays */
     .laporan-text {
       font-size: 0.66rem;
       font-weight: 650;
@@ -660,7 +676,7 @@
       box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 180ms var(--ease-out), transform 200ms var(--ease-spring);
+      transition: opacity 180ms var(--ease-smooth), transform 200ms var(--ease-spring);
       z-index: 200;
       white-space: nowrap;
     }
@@ -685,10 +701,11 @@
         <h1 id="headerTitle">Tagihan</h1>
         <p id="headerSub">Data tagihan penting</p>
       </div>
-      <div class="header-badge">
+      <!-- PUSAT DATA LINK DI HALAMAN YANG SAMA -->
+      <a href="https://pusatwifisolo.github.io/data/" target="_self" class="header-badge" aria-label="Buka Pusat Data">
         <span class="material-symbols-rounded" aria-hidden="true">verified</span>
         PUSAT DATA
-      </div>
+      </a>
     </div>
   </header>
 
@@ -908,7 +925,7 @@
         </button>
       </section>
 
-      <!-- TAB 5: Laporan (Corrected Text, Compact & Solid Dark) -->
+      <!-- TAB 5: Laporan -->
       <section class="tab-panel" id="tab-laporan" aria-label="Laporan">
         <div class="store-card">
           <div class="card-title blue">
@@ -1045,7 +1062,6 @@
     let toastTimer = null;
     let isAnimating = false;
 
-    /* Ultra-smooth cubic bezier spring-curve timing */
     const TAB_DURATION = 320;
     const TRANSITION = "transform " + TAB_DURATION + "ms cubic-bezier(0.16, 1, 0.3, 1)";
 
@@ -1185,6 +1201,21 @@
         var el = document.getElementById(id);
         if (!el) return;
         el.addEventListener("input", onInvInput);
+        
+        el.addEventListener("focus", function() {
+          var self = this;
+          setTimeout(function() {
+            try {
+              self.setSelectionRange(0, 9999);
+            } catch (_) {
+              self.select();
+            }
+          }, 30);
+        });
+        
+        el.addEventListener("mouseup", function(e) {
+          e.preventDefault();
+        });
       });
       updateInvoiceUI();
     }
@@ -1355,7 +1386,6 @@
     function copyText(text, btn, e) {
       if (btn) {
         createRipple(btn, e);
-        // Visual button feedback animation
         btn.classList.add("copied-state");
         const icon = btn.querySelector(".material-symbols-rounded");
         const oldIcon = icon ? icon.textContent : "";
@@ -1411,7 +1441,7 @@
       window.open("https://wa.me/" + cleaned, "_blank", "noopener,noreferrer");
     }
 
-    /* ===== ULTRA SMOOTH TABS SWITCHING ===== */
+    /* ===== TABS SWITCHING ===== */
     const tabsWrapper = document.getElementById("tabsWrapper");
 
     function setTransform(pct, withTransition) {
@@ -1449,12 +1479,11 @@
       updateNavAndHeader();
     }
 
-    /* ===== TAB LAPORAN LOGIC (CORRECTED TEXT FORMULA) ===== */
+    /* ===== TAB LAPORAN LOGIC ===== */
     const rawLaporanTemplates = [
       {
         id: "gaji",
         label: "Perbandingan Gaji",
-        /* PERBAIKAN TEKS PERSIS SESUAI KOREKSI */
         template: (bIni, tIni, bSblm, tSblm) => `Perbandingan Gaji Bulan *${bIni} ${tIni}* Dengan Gaji Bulan *${bSblm} ${tSblm}*`
       },
       {
@@ -1539,7 +1568,7 @@
       updateLaporanCards();
     }
 
-    /* ===== ULTRA SMOOTH TOUCH SWIPING ===== */
+    /* ===== TOUCH SWIPING LOGIC ===== */
     let touchStartX = 0, touchStartY = 0, isSwiping = false;
     const main = document.getElementById("appMain");
 
