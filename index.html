@@ -32,17 +32,15 @@
       --success-hover: rgba(5, 150, 105, 0.18);
       --warning: #d97706;
       --purple: #7c3aed;
-      --nav-height: 56px;
-      --radius: 12px;
-      --radius-sm: 10px;
-      --radius-xs: 7px;
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.03);
-      --shadow: 0 2px 8px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.07), 0 2px 6px rgba(15, 23, 42, 0.04);
-      --shadow-glow: 0 4px 20px rgba(37, 99, 235, 0.22);
-      --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-      --ease-spring: cubic-bezier(0.34, 1.35, 0.64, 1);
+      --nav-height: 54px;
+      --radius: 10px;
+      --radius-sm: 8px;
+      --radius-xs: 6px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.03);
+      --shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+      --shadow-glow: 0 4px 18px rgba(37, 99, 235, 0.18);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
     }
 
     *, *::before, *::after {
@@ -60,12 +58,9 @@
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.35;
+      line-height: 1.3;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overscroll-behavior: none;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
     }
 
     body {
@@ -76,111 +71,99 @@
       position: relative;
       background: var(--bg-gradient);
       padding-top: env(safe-area-inset-top, 0px);
-      padding-left: env(safe-area-inset-left, 0px);
-      padding-right: env(safe-area-inset-right, 0px);
     }
 
-    /* Material Symbols: reserve fixed box so buttons never resize on font load */
     .material-symbols-rounded {
       font-family: 'Material Symbols Rounded', sans-serif;
       font-weight: normal;
       font-style: normal;
-      font-size: 24px;
+      font-size: 20px;
       line-height: 1;
-      letter-spacing: normal;
-      text-transform: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      white-space: nowrap;
-      word-wrap: normal;
-      direction: ltr;
-      -webkit-font-feature-settings: 'liga';
-      font-feature-settings: 'liga';
-      -webkit-font-smoothing: antialiased;
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       width: 1em;
       height: 1em;
-      min-width: 1em;
-      min-height: 1em;
-      max-width: 1em;
-      max-height: 1em;
-      overflow: hidden;
       flex-shrink: 0;
       color: transparent;
       transition: color 100ms ease;
     }
-    .fonts-ready .material-symbols-rounded {
-      color: inherit;
-    }
-    .fonts-ready .toast .material-symbols-rounded {
-      color: #34d399;
-    }
+    .fonts-ready .material-symbols-rounded { color: inherit; }
+    .fonts-ready .toast .material-symbols-rounded { color: #34d399; }
 
-    * {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    *::-webkit-scrollbar {
-      width: 0 !important;
-      height: 0 !important;
-      display: none !important;
-    }
+    *::-webkit-scrollbar { display: none !important; }
 
-    /* ===== HEADER ===== */
+    /* ===== PREMIERE ELEGAN HEADER ===== */
     .app-header {
       flex-shrink: 0;
       padding: 10px 14px 8px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(20px) saturate(1.5);
-      -webkit-backdrop-filter: blur(20px) saturate(1.5);
-      border-bottom: 1px solid var(--border-light);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.4);
       z-index: 10;
       position: relative;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
     }
 
     .app-header::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2.5px;
+      top: 0; left: 0; right: 0;
+      height: 3px;
       background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 40%, #0ea5e9 75%, #38bdf8 100%);
-      opacity: 0.9;
     }
 
-    .app-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 16px;
-      right: 16px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.15) 30%, rgba(14, 165, 233, 0.12) 70%, transparent 100%);
+    .header-content-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .header-titles {
+      display: flex;
+      flex-direction: column;
     }
 
     .app-header h1 {
-      font-size: 1.18rem;
+      font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: -0.035em;
-      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 55%, #0ea5e9 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #2563eb 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
       line-height: 1.15;
     }
 
     .app-header p {
-      font-size: 0.68rem;
+      font-size: 0.63rem;
       color: var(--text-secondary);
-      margin-top: 1px;
       font-weight: 500;
       letter-spacing: 0.01em;
-      opacity: 0.8;
     }
 
-    /* ===== MAIN ===== */
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 9px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(14, 165, 233, 0.08));
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 20px;
+      color: var(--primary-deep);
+      font-size: 0.58rem;
+      font-weight: 750;
+      letter-spacing: 0.03em;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+    }
+
+    .header-badge .material-symbols-rounded {
+      font-size: 14px;
+      color: var(--primary);
+    }
+
+    /* ===== MAIN & ULTRA-SMOOTH TABS ===== */
     .app-main {
       flex: 1;
       overflow: hidden;
@@ -188,7 +171,6 @@
       padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
     }
 
-    /* Diubah dari 500% menjadi 600% karena sekarang ada 6 tab */
     .tabs-wrapper {
       display: flex;
       width: 600%;
@@ -198,79 +180,63 @@
       backface-visibility: hidden;
     }
 
-    /* Diubah dari 20% menjadi 16.6666% karena sekarang ada 6 tab */
     .tab-panel {
       width: 16.6666%;
       height: 100%;
       overflow-y: auto;
-      overflow-x: hidden;
-      padding: 8px 12px 12px;
+      padding: 6px 10px 10px;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
-      overscroll-behavior-x: none;
     }
 
-    /* ===== CARDS ===== */
+    /* ===== CARDS GENERAL ===== */
     .card {
       background: var(--surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius);
-      padding: 9px 12px;
-      margin-bottom: 7px;
+      padding: 7px 10px;
+      margin-bottom: 5px;
       box-shadow: var(--shadow);
-      transition: box-shadow 180ms ease, border-color 180ms ease;
     }
 
     .card-title {
-      font-size: 0.58rem;
+      font-size: 0.52rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 5px;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
-
-    .card-title .material-symbols-rounded { font-size: 14px; }
+    .card-title .material-symbols-rounded { font-size: 13px; }
     .card-title.blue { color: var(--primary); }
     .card-title.sky { color: var(--accent); }
     .card-title.purple { color: var(--purple); }
 
     .card-label {
-      font-size: 0.66rem;
+      font-size: 0.6rem;
       color: var(--text-muted);
-      margin-bottom: 1px;
       font-weight: 500;
     }
 
     .card-value {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.025em;
       color: var(--text);
       font-variant-numeric: tabular-nums;
       user-select: text;
       word-break: break-all;
-      line-height: 1.3;
     }
-
-    .card-value.large {
-      font-size: 1.02rem;
-      letter-spacing: 0.03em;
-    }
+    .card-value.large { font-size: 0.88rem; }
 
     .card-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .card-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .card-info { flex: 1; min-width: 0; }
 
     .card-actions {
       display: flex;
@@ -279,27 +245,23 @@
       flex-shrink: 0;
     }
 
-    /* ===== SECTION ===== */
+    /* ===== SECTIONS ===== */
     .section-title {
-      font-size: 0.62rem;
+      font-size: 0.54rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-secondary);
-      margin: 12px 0 6px;
+      margin: 7px 0 3px;
       padding-left: 2px;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
-
     .section-title:first-child { margin-top: 0; }
-    .section-title .material-symbols-rounded {
-      font-size: 15px;
-      color: var(--primary);
-    }
+    .section-title .material-symbols-rounded { font-size: 13px; color: var(--primary); }
 
-    /* ===== BUTTONS ===== */
+    /* ===== OPTIMIZED & PROPER COPY BUTTONS ===== */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -308,163 +270,125 @@
       border: none;
       border-radius: var(--radius-xs);
       font-family: inherit;
-      font-size: 0.74rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 650;
       cursor: pointer;
-      transition: background 150ms ease, box-shadow 150ms ease, transform 80ms ease;
-      min-height: 32px;
-      min-width: 32px;
-      padding: 0 9px;
+      min-height: 30px;
+      min-width: 30px;
+      padding: 0 10px;
       user-select: none;
-      -webkit-user-select: none;
       position: relative;
       overflow: hidden;
       touch-action: manipulation;
-      -webkit-touch-callout: none;
+      transition: transform 120ms var(--ease-smooth), background-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
     }
 
     .btn:active {
-      transform: scale(0.94);
-    }
-
-    .btn:focus { outline: none; }
-    .btn:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
+      transform: scale(0.91);
     }
 
     .btn-copy {
       background: var(--primary-soft);
       color: var(--primary);
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.06);
     }
-    .btn-copy:hover { background: var(--primary-hover); }
-    .btn-copy:active { background: rgba(37, 99, 235, 0.22); }
+    .btn-copy:active {
+      background: rgba(37, 99, 235, 0.22);
+    }
+
+    /* Green success pulse state when copied */
+    .btn-copy.copied-state {
+      background: #059669 !important;
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3) !important;
+      transform: scale(0.96);
+    }
 
     .btn-dm {
       background: var(--success-soft);
       color: var(--success);
       padding: 0;
-      width: 32px;
+      width: 30px;
+      min-height: 30px;
       border-radius: 50%;
     }
-    .btn-dm:hover { background: var(--success-hover); }
-    .btn-dm:active { background: rgba(5, 150, 105, 0.25); }
-    .btn-dm .material-symbols-rounded { font-size: 16px; }
+    .btn-dm:active { background: rgba(5, 150, 105, 0.24); }
+    .btn-dm .material-symbols-rounded { font-size: 15px; }
 
     .btn-full {
       width: 100%;
-      margin-top: 8px;
-      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #0ea5e9 100%);
+      margin-top: 6px;
+      background: linear-gradient(135deg, #1e40af, #2563eb, #0ea5e9);
       color: #fff;
-      height: 36px;
+      height: 32px;
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow-glow);
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 650;
-    }
-    .btn-full:hover { box-shadow: 0 6px 24px rgba(37, 99, 235, 0.32); }
-    .btn-full:active {
-      transform: scale(0.97);
-      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
     }
 
     .btn .material-symbols-rounded { font-size: 15px; }
 
-    .btn .ripple {
+    .ripple {
       position: absolute;
       border-radius: 50%;
-      background: rgba(37, 99, 235, 0.25);
+      background: rgba(37, 99, 235, 0.3);
       transform: scale(0);
-      animation: ripple-anim 420ms var(--ease-out);
+      animation: ripple-anim 380ms cubic-bezier(0, 0, 0.2, 1);
       pointer-events: none;
     }
-    .btn-dm .ripple { background: rgba(5, 150, 105, 0.3); }
-    .btn-full .ripple { background: rgba(255, 255, 255, 0.35); }
+    .btn-copied .ripple, .btn-dm .ripple { background: rgba(255, 255, 255, 0.4); }
+    @keyframes ripple-anim { to { transform: scale(2.8); opacity: 0; } }
 
-    @keyframes ripple-anim {
-      to { transform: scale(2.6); opacity: 0; }
-    }
-
-    /* ===== DETAIL ===== */
+    /* ===== DETAILS ===== */
     .detail-block {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 5px;
+      padding-top: 5px;
       border-top: 1px solid var(--border-light);
     }
-
     .detail-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 8px;
-      padding: 3px 0;
+      padding: 1.5px 0;
     }
+    .detail-key { font-size: 0.6rem; color: var(--text-muted); font-weight: 500; }
+    .detail-val { font-size: 0.7rem; font-weight: 600; color: var(--text); }
 
-    .detail-key {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      flex-shrink: 0;
-      font-weight: 500;
-    }
-
-    .detail-val {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--text);
-      text-align: right;
-      word-break: break-all;
-      user-select: text;
-    }
-
-    /* ===== CONTACT / NIK LIST ===== */
+    /* ===== COMPACT LISTS (KONTAK / NIK) ===== */
     .list-group {
       background: var(--surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
     .list-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding: 8px 12px;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.11);
-      margin: 0;
-      box-shadow: none;
-      border-radius: 0;
-      min-height: 44px;
+      gap: 6px;
+      padding: 5px 8px 5px 10px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+      min-height: 36px;
       position: relative;
-      padding-left: 14px;
-      transition: background 120ms ease;
     }
-
-    .list-item:last-child {
-      border-bottom: none;
-    }
-
-    .list-item:active {
-      background: rgba(37, 99, 235, 0.04);
-    }
+    .list-item:last-child { border-bottom: none; }
+    .list-item:active { background: rgba(37, 99, 235, 0.03); }
 
     .list-item .name {
-      font-size: 0.84rem;
+      font-size: 0.75rem;
       font-weight: 650;
       color: var(--text);
-      margin-bottom: 1px;
-      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
     .list-item .number {
-      font-size: 0.74rem;
+      font-size: 0.66rem;
       color: var(--text-secondary);
       font-variant-numeric: tabular-nums;
-      letter-spacing: 0.03em;
       font-weight: 500;
       user-select: text;
     }
@@ -472,88 +396,74 @@
     .list-item::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 22%;
-      bottom: 22%;
+      left: 0; top: 20%; bottom: 20%;
       width: 2.5px;
-      border-radius: 0 3px 3px 0;
+      border-radius: 0 2px 2px 0;
       background: linear-gradient(180deg, #2563eb, #0ea5e9);
       opacity: 0.35;
-      transition: opacity 150ms ease;
-    }
-
-    .list-item:active::before {
-      opacity: 0.75;
     }
 
     /* ===== KK CARD ===== */
     .kk-card {
-      background: linear-gradient(145deg, #1e3a8a 0%, #1e40af 30%, #2563eb 65%, #0ea5e9 100%);
+      background: linear-gradient(145deg, #1e3a8a, #2563eb, #0ea5e9);
       border: none;
       text-align: center;
-      padding: 12px 12px;
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25), 0 2px 6px rgba(37, 99, 235, 0.1);
+      padding: 8px 10px;
       position: relative;
       overflow: hidden;
     }
-
-    .kk-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -25%;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .kk-card::after {
-      content: '';
-      position: absolute;
-      bottom: -40%;
-      left: -20%;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .kk-card .card-title {
-      justify-content: center;
-      margin-bottom: 6px;
-      color: rgba(255, 255, 255, 0.8);
-      position: relative;
-      z-index: 1;
-    }
-
-    .kk-card .card-value {
-      font-size: 1.08rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
-      color: #fff;
-      position: relative;
-      z-index: 1;
-      font-weight: 750;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-
+    .kk-card .card-title { justify-content: center; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
+    .kk-card .card-value { font-size: 0.92rem; letter-spacing: 0.08em; margin-bottom: 5px; color: #fff; font-weight: 750; }
     .kk-card .btn-copy {
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.2);
       color: #fff;
-      min-width: 100px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      font-weight: 650;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      min-width: 80px;
     }
-    .kk-card .btn-copy:hover { background: rgba(255, 255, 255, 0.28); }
-    .kk-card .btn-copy:active { background: rgba(255, 255, 255, 0.35); }
-    .kk-card .btn-copy .ripple { background: rgba(255, 255, 255, 0.4); }
+
+    /* ===== COMPACT ALAMAT CARDS ===== */
+    .addr-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 6px 9px;
+      margin-bottom: 5px;
+      position: relative;
+    }
+    .addr-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 15%; bottom: 15%;
+      width: 2.5px;
+      border-radius: 0 2px 2px 0;
+      background: linear-gradient(180deg, #2563eb, #0ea5e9);
+      opacity: 0.55;
+    }
+    .addr-label {
+      font-size: 0.52rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .addr-label .material-symbols-rounded { font-size: 12px; }
+    .addr-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .addr-row:last-child { margin-bottom: 0; }
+    .addr-key { font-size: 0.52rem; color: var(--text-muted); font-weight: 500; }
+    .addr-val { font-size: 0.72rem; font-weight: 650; color: var(--text); user-select: text; }
+    .addr-val.addr-text { font-size: 0.68rem; font-weight: 550; color: var(--text-secondary); line-height: 1.25; }
+    .addr-card .btn-copy { min-width: 28px; min-height: 28px; width: 28px; padding: 0; border-radius: 50%; }
 
     /* ===== INVOICE TABLE ===== */
     .invoice-card {
@@ -562,318 +472,112 @@
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow);
       overflow: hidden;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-
     .store-card {
       background: var(--surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow);
-      padding: 6px 8px;
-      margin-bottom: 6px;
+      padding: 5px 7px;
+      margin-bottom: 5px;
     }
-
-    .store-card .card-title {
-      margin-bottom: 4px;
-      font-size: 0.52rem;
-    }
-    .store-card .card-title .material-symbols-rounded { font-size: 12px; }
-
-    .store-row {
-      display: flex;
-      gap: 6px;
-      align-items: stretch;
-    }
-
-    .store-field {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .store-field label {
-      display: block;
-      font-size: 0.54rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-      letter-spacing: 0.02em;
-    }
-
+    .store-row { display: flex; gap: 5px; }
+    .store-field { flex: 1; min-width: 0; }
+    .store-field label { display: block; font-size: 0.5rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5px; }
     .store-input {
       width: 100%;
       border: 1px solid rgba(148, 163, 184, 0.28);
       background: rgba(248, 250, 252, 0.9);
       font-family: inherit;
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-weight: 600;
       color: var(--text);
-      padding: 4px 6px;
-      border-radius: 6px;
+      padding: 2.5px 4px;
+      border-radius: 4px;
       outline: none;
-      transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
-      -webkit-appearance: none;
-      appearance: none;
-      min-height: 28px;
-      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+      min-height: 24px;
     }
 
-    .store-input::placeholder {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .store-input:hover {
-      border-color: rgba(148, 163, 184, 0.45);
-      background: #fff;
-    }
-
-    .store-input:focus {
-      background: #fff;
-      border-color: rgba(37, 99, 235, 0.45);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
-    }
-
-    .invoice-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
+    .invoice-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
     .invoice-table thead th {
-      font-size: 0.5rem;
+      font-size: 0.46rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       color: var(--text-secondary);
       background: rgba(241, 245, 249, 0.85);
-      padding: 4px 4px;
+      padding: 2.5px 3px;
       text-align: left;
       border-bottom: 1px solid var(--border-light);
-      white-space: nowrap;
     }
+    .invoice-table thead th:nth-child(1) { width: 18px; text-align: center; }
+    .invoice-table thead th:nth-child(3) { width: 18px; text-align: center; }
+    .invoice-table thead th:nth-child(4) { width: 36%; text-align: right; padding-right: 4px; }
 
-    .invoice-table thead th:nth-child(1) { width: 22px; text-align: center; padding-left: 4px; }
-    .invoice-table thead th:nth-child(2) { width: auto; }
-    .invoice-table thead th:nth-child(3) { width: 22px; text-align: center; }
-    .invoice-table thead th:nth-child(4) { width: 36%; text-align: right; padding-right: 6px; }
-
-    .invoice-table tbody tr {
-      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
-      transition: background 120ms ease;
-    }
-    .invoice-table tbody tr:last-child { border-bottom: none; }
-    .invoice-table tbody tr:active { background: rgba(37, 99, 235, 0.03); }
-
-    .invoice-table td {
-      padding: 3px 4px;
-      vertical-align: middle;
-      font-size: 0.68rem;
-    }
-
-    .invoice-table td:nth-child(1) {
-      text-align: center;
-      padding-left: 4px;
-      font-weight: 650;
-      color: var(--text-muted);
-      font-size: 0.62rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .invoice-table td:nth-child(2) {
-      font-weight: 550;
-      color: var(--text);
-      font-size: 0.64rem;
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-    }
-
-    .invoice-table td:nth-child(3) {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.6rem;
-      font-weight: 500;
-    }
-
-    .invoice-table td:nth-child(4) {
-      padding-right: 4px;
-      text-align: right;
-    }
+    .invoice-table td { padding: 2px 3px; vertical-align: middle; font-size: 0.62rem; border-bottom: 1px solid rgba(148, 163, 184, 0.08); }
+    .invoice-table td:nth-child(1) { text-align: center; font-weight: 650; color: var(--text-muted); font-size: 0.56rem; }
+    .invoice-table td:nth-child(2) { font-weight: 550; color: var(--text); font-size: 0.6rem; }
+    .invoice-table td:nth-child(3) { text-align: center; color: var(--text-muted); font-size: 0.56rem; }
+    .invoice-table td:nth-child(4) { text-align: right; padding-right: 2px; }
 
     .inv-input {
       width: 100%;
       border: 1px solid rgba(148, 163, 184, 0.28);
       background: rgba(248, 250, 252, 0.9);
       font-family: inherit;
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-weight: 650;
       color: var(--text);
       text-align: right;
-      padding: 3px 5px;
-      border-radius: 6px;
+      padding: 2px 3px;
+      border-radius: 4px;
       outline: none;
+      min-height: 22px;
       font-variant-numeric: tabular-nums;
-      letter-spacing: 0.01em;
-      transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
-      -webkit-appearance: none;
-      appearance: none;
-      min-height: 26px;
-      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
     }
+    .inv-input.is-default { color: var(--text-muted); font-weight: 500; }
+    .inv-input.is-readonly { pointer-events: none; background: rgba(241, 245, 249, 0.75); font-weight: 700; }
+    .inv-input.negative { color: #dc2626; }
+    .inv-row-total td { background: rgba(37, 99, 235, 0.04); font-weight: 700; }
 
-    .inv-input::placeholder {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .inv-input.is-default {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .inv-input:hover {
-      border-color: rgba(148, 163, 184, 0.45);
-      background: #fff;
-    }
-
-    .inv-input:focus {
-      background: #fff;
-      border-color: rgba(37, 99, 235, 0.45);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
-      color: var(--text);
-      font-weight: 650;
-    }
-
-    .inv-input.is-readonly {
-      pointer-events: none;
-      background: rgba(241, 245, 249, 0.75);
-      border-color: rgba(148, 163, 184, 0.18);
-      color: var(--text);
-      font-weight: 700;
-      box-shadow: none;
-    }
-
-    .inv-input.is-readonly.is-default {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .inv-input.negative {
-      color: #dc2626;
-    }
-
-    .inv-row-total td {
-      background: rgba(37, 99, 235, 0.04);
-      font-weight: 700;
-    }
-
-    .inv-row-total .inv-input {
-      font-weight: 750;
-      font-size: 0.74rem;
-    }
-
-    #tab-invoice .btn-full {
-      height: 32px;
-      margin-top: 6px;
-      font-size: 0.7rem;
-    }
-
-    /* ===== ALAMAT CARDS ===== */
-    .addr-card {
+    /* ===== TAB LAPORAN (COMPACT & SOLID BLACK TEXT) ===== */
+    .laporan-card {
       background: var(--surface);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 10px 12px;
-      margin-bottom: 8px;
+      border-radius: var(--radius-sm);
+      padding: 5px 7px;
+      margin-bottom: 4.5px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
       position: relative;
-      overflow: hidden;
     }
-    .addr-card::before {
+    .laporan-card::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 12%;
-      bottom: 12%;
-      width: 3px;
-      border-radius: 0 3px 3px 0;
+      left: 0; top: 15%; bottom: 15%;
+      width: 2.5px;
+      border-radius: 0 2px 2px 0;
       background: linear-gradient(180deg, #2563eb, #0ea5e9);
-      opacity: 0.55;
+      opacity: 0.6;
     }
-    .addr-label {
-      font-size: 0.58rem;
+    .laporan-info { flex: 1; min-width: 0; padding-left: 2px; }
+    .laporan-label {
+      font-size: 0.5rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--primary);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      margin-bottom: 1.5px;
     }
-    .addr-label .material-symbols-rounded { font-size: 14px; }
-    .addr-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .addr-row:last-child { margin-bottom: 0; }
-    .addr-info { flex: 1; min-width: 0; }
-    .addr-key {
-      font-size: 0.58rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-bottom: 1px;
-    }
-    .addr-val {
-      font-size: 0.8rem;
-      font-weight: 650;
-      color: var(--text);
-      line-height: 1.3;
-      word-break: break-word;
-      user-select: text;
-    }
-    .addr-val.mono {
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.02em;
-    }
-    .addr-val.addr-text {
-      font-size: 0.74rem;
-      font-weight: 550;
-      color: var(--text-secondary);
-      line-height: 1.35;
-    }
-    .addr-card .btn-copy {
-      flex-shrink: 0;
-      min-width: 30px;
-      min-height: 30px;
-      width: 30px;
-      padding: 0;
-      border-radius: 50%;
-    }
-    .addr-card .btn-copy .material-symbols-rounded { font-size: 15px; }
-
-    /* ===== LAPORAN TEXT CARDS ===== */
-    .laporan-text-card {
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+    /* Solid 1 color dark text (#0f172a) without any color background overlays */
     .laporan-text {
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-      flex: 1;
+      font-size: 0.66rem;
+      font-weight: 650;
+      color: #0f172a;
+      line-height: 1.25;
       word-break: break-word;
       user-select: text;
     }
@@ -881,21 +585,18 @@
     /* ===== BOTTOM NAV ===== */
     .bottom-nav {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       max-width: 480px;
       margin: 0 auto;
       height: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
       padding-bottom: env(safe-area-inset-bottom, 0px);
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(24px) saturate(1.5);
-      -webkit-backdrop-filter: blur(24px) saturate(1.5);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
       display: flex;
       align-items: stretch;
       z-index: 100;
-      box-shadow: 0 -6px 24px rgba(15, 23, 42, 0.06);
     }
 
     .nav-item {
@@ -909,163 +610,86 @@
       border: none;
       color: var(--text-muted);
       font-family: inherit;
-      font-size: 0.54rem; /* Dikecilkan sedikit agar muat 6 tab */
+      font-size: 0.48rem;
       font-weight: 600;
       cursor: pointer;
-      transition: color 200ms var(--ease-out);
       position: relative;
-      padding-top: 5px;
+      padding-top: 2px;
       user-select: none;
     }
 
     .nav-item .material-symbols-rounded {
-      font-size: 19px; /* Dikecilkan sedikit agar muat 6 tab */
-      transition: transform 240ms var(--ease-spring), font-variation-settings 200ms ease, color 200ms ease;
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 18px;
+      transition: transform 220ms var(--ease-spring), color 200ms ease;
     }
 
     .nav-item.active { color: var(--primary); }
     .nav-item.active .material-symbols-rounded {
-      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-      transform: translateY(-2px) scale(1.06);
+      font-variation-settings: 'FILL' 1;
+      transform: translateY(-1px) scale(1.08);
     }
 
     .nav-item::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 50%;
+      top: 0; left: 50%;
       transform: translateX(-50%) scaleX(0);
-      width: 24px;
-      height: 2.5px;
-      border-radius: 0 0 3px 3px;
+      width: 18px;
+      height: 2px;
+      border-radius: 0 0 2px 2px;
       background: linear-gradient(90deg, #1e40af, #0ea5e9);
-      transition: transform 240ms var(--ease-spring);
+      transition: transform 220ms var(--ease-spring);
     }
     .nav-item.active::after { transform: translateX(-50%) scaleX(1); }
-    .nav-item:active { opacity: 0.7; }
-    .nav-item:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: -2px;
-    }
 
     /* ===== TOAST ===== */
     .toast {
       position: fixed;
-      bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 12px);
+      bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px) + 8px);
       left: 50%;
       transform: translateX(-50%) translateY(16px) scale(0.96);
       background: #0f172a;
       color: #f8fafc;
-      border: none;
-      padding: 9px 16px;
-      border-radius: 10px;
-      font-size: 0.76rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.7rem;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 7px;
-      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.3);
+      gap: 5px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 200ms var(--ease-out), transform 240ms var(--ease-spring);
+      transition: opacity 180ms var(--ease-out), transform 200ms var(--ease-spring);
       z-index: 200;
       white-space: nowrap;
-      max-width: calc(100% - 28px);
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0) scale(1);
-    }
-    .toast .material-symbols-rounded {
-      font-size: 17px;
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    .toast .material-symbols-rounded { font-size: 14px; }
 
-    /* Desktop frame */
     @media (min-width: 481px) {
       body {
         border-left: 1px solid var(--border);
         border-right: 1px solid var(--border);
         box-shadow: 0 0 80px rgba(37, 99, 235, 0.07);
         min-height: 100vh;
-        min-height: 100dvh;
       }
-      .bottom-nav {
-        border-left: 1px solid var(--border);
-        border-right: 1px solid var(--border);
-      }
-      .tab-panel { padding: 12px 16px 16px; }
-    }
-
-    /* Narrow phones */
-    @media (max-width: 360px) {
-      .app-header { padding: 8px 12px 7px; }
-      .app-header h1 { font-size: 1.08rem; }
-      .tab-panel { padding: 6px 10px 10px; }
-      .card-value.large { font-size: 0.92rem; }
-      .kk-card .card-value { font-size: 0.95rem; letter-spacing: 0.06em; }
-      .btn { min-height: 30px; min-width: 30px; padding: 0 8px; font-size: 0.68rem; }
-      .btn-dm { width: 30px; }
-      .list-item { padding: 7px 10px; padding-left: 12px; min-height: 40px; }
-      .list-item .name { font-size: 0.8rem; }
-      .list-item .number { font-size: 0.7rem; }
-      .invoice-table td:nth-child(2) { font-size: 0.6rem; }
-      .inv-input { font-size: 0.66rem; padding: 2px 4px; min-height: 24px; }
-      .nav-item { font-size: 0.5rem; }
-      .nav-item .material-symbols-rounded { font-size: 17px; }
-      .laporan-text { font-size: 0.68rem; }
-    }
-
-    /* Short screens */
-    @media (max-height: 720px) {
-      .app-header { padding: 8px 14px 6px; }
-      .app-header h1 { font-size: 1.1rem; }
-      .app-header p { font-size: 0.64rem; margin-top: 0; }
-      .tab-panel { padding: 6px 12px 10px; }
-      .card { padding: 8px 11px; margin-bottom: 6px; }
-      .card-title { margin-bottom: 4px; }
-      .detail-block { margin-top: 6px; padding-top: 6px; }
-      .detail-row { padding: 2px 0; }
-      .btn-full { height: 34px; margin-top: 6px; }
-      .kk-card { padding: 10px 12px; }
-      .kk-card .card-value { font-size: 1rem; margin-bottom: 8px; }
-      .section-title { margin: 10px 0 5px; }
-      .list-item { padding: 6px 12px; min-height: 38px; }
-      .list-item .name { font-size: 0.8rem; margin-bottom: 0; }
-      .list-item .number { font-size: 0.7rem; }
-      .invoice-table thead th { padding: 3px 3px; }
-      .invoice-table td { padding: 2px 3px; }
-      .laporan-text-card { padding: 8px 11px; margin-bottom: 6px; }
-      :root { --nav-height: 52px; }
-    }
-
-    /* Very short */
-    @media (max-height: 600px) {
-      .app-header { padding: 6px 12px 5px; }
-      .tab-panel { padding: 4px 10px 8px; }
-      .card { padding: 7px 10px; margin-bottom: 5px; }
-      .list-item { padding: 5px 10px; min-height: 36px; }
-      .kk-card { padding: 8px 10px; }
-      .section-title { margin: 8px 0 4px; }
-      .laporan-text-card { padding: 7px 10px; margin-bottom: 5px; }
-      :root { --nav-height: 48px; }
-    }
-
-    /* Landscape phones */
-    @media (max-height: 420px) and (orientation: landscape) {
-      .app-header { padding: 4px 12px; }
-      .app-header p { display: none; }
-      .tab-panel { padding: 4px 10px 6px; }
-      :root { --nav-height: 44px; }
-      .nav-item .material-symbols-rounded { font-size: 18px; }
-      .nav-item { font-size: 0.52rem; padding-top: 2px; }
+      .bottom-nav { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
     }
   </style>
 </head>
 <body>
   <header class="app-header">
-    <h1 id="headerTitle">Tagihan</h1>
-    <p id="headerSub">Data tagihan penting</p>
+    <div class="header-content-wrapper">
+      <div class="header-titles">
+        <h1 id="headerTitle">Tagihan</h1>
+        <p id="headerSub">Data tagihan penting</p>
+      </div>
+      <div class="header-badge">
+        <span class="material-symbols-rounded" aria-hidden="true">verified</span>
+        PUSAT DATA
+      </div>
+    </div>
   </header>
 
   <main class="app-main" id="appMain">
@@ -1078,7 +702,7 @@
             Token Listrik
           </div>
           <div class="card-label">Tegal Makmur</div>
-          <div class="card-row" style="margin-top:5px">
+          <div class="card-row" style="margin-top:3px">
             <div class="card-value large">14384251667</div>
             <button type="button" class="btn btn-copy" onclick="copyText('14384251667', this)" aria-label="Salin token listrik">
               <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
@@ -1093,7 +717,7 @@
             XL SATU
           </div>
           <div class="card-label">ID Pelanggan</div>
-          <div class="card-row" style="margin-top:5px">
+          <div class="card-row" style="margin-top:3px">
             <div class="card-value large">11832647</div>
             <button type="button" class="btn btn-copy" onclick="copyText('11832647', this)" aria-label="Salin ID Pelanggan XL SATU">
               <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
@@ -1101,7 +725,7 @@
             </button>
           </div>
           <div class="detail-block">
-            <div class="card-title purple" style="margin-bottom:5px">
+            <div class="card-title purple" style="margin-bottom:3px">
               <span class="material-symbols-rounded" aria-hidden="true">info</span>
               Detail
             </div>
@@ -1284,11 +908,36 @@
         </button>
       </section>
 
-      <!-- TAB 5: Laporan -->
+      <!-- TAB 5: Laporan (Corrected Text, Compact & Solid Dark) -->
       <section class="tab-panel" id="tab-laporan" aria-label="Laporan">
-        <div id="laporanList">
-          <!-- Text cards will be injected by JavaScript -->
+        <div class="store-card">
+          <div class="card-title blue">
+            <span class="material-symbols-rounded" aria-hidden="true">tune</span>
+            Variabel Laporan
+          </div>
+          <div class="store-row" style="margin-bottom: 3.5px;">
+            <div class="store-field">
+              <label for="lapBulanIni">Bulan Ini</label>
+              <input type="text" class="store-input" id="lapBulanIni" placeholder="MISAL: FEBRUARI" autocomplete="off" aria-label="Bulan Ini">
+            </div>
+            <div class="store-field">
+              <label for="lapTahunIni">Tahun Ini</label>
+              <input type="text" class="store-input" id="lapTahunIni" placeholder="MISAL: 2026" autocomplete="off" aria-label="Tahun Ini">
+            </div>
+          </div>
+          <div class="store-row">
+            <div class="store-field">
+              <label for="lapBulanSebelumnya">Bulan Sebelumnya</label>
+              <input type="text" class="store-input" id="lapBulanSebelumnya" placeholder="MISAL: JANUARI" autocomplete="off" aria-label="Bulan Sebelumnya">
+            </div>
+            <div class="store-field">
+              <label for="lapTahunSebelumnya">Tahun Sebelumnya</label>
+              <input type="text" class="store-input" id="lapTahunSebelumnya" placeholder="MISAL: 2026" autocomplete="off" aria-label="Tahun Sebelumnya">
+            </div>
+          </div>
         </div>
+
+        <div id="laporanList"></div>
       </section>
     </div>
   </main>
@@ -1321,7 +970,7 @@
   </nav>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
-    <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+    <span class="material-symbols-rounded" id="toastIcon" aria-hidden="true">check_circle</span>
     <span id="toastMsg">Berhasil disalin</span>
   </div>
 
@@ -1388,7 +1037,7 @@
       { title: "NIK", sub: "Data identitas keluarga" },
       { title: "Alamat", sub: "Alamat rumah & toko" },
       { title: "Invoice", sub: "Bebas ubah invoice" },
-      { title: "Laporan", sub: "Format teks laporan" }
+      { title: "Laporan", sub: "Format teks laporan WhatsApp" }
     ];
 
     let currentTab = 0;
@@ -1396,10 +1045,11 @@
     let toastTimer = null;
     let isAnimating = false;
 
-    const TAB_DURATION = 280;
-    const TRANSITION = "transform " + TAB_DURATION + "ms cubic-bezier(0.32, 0.72, 0, 1)";
+    /* Ultra-smooth cubic bezier spring-curve timing */
+    const TAB_DURATION = 320;
+    const TRANSITION = "transform " + TAB_DURATION + "ms cubic-bezier(0.16, 1, 0.3, 1)";
 
-    /* ===== INVOICE STATE ===== */
+    /* ===== INVOICE LOGIC ===== */
     const invState = {
       hargaSebelumA: { value: 0, manual: false },
       hargaSetelahA: { value: 0, manual: false },
@@ -1443,70 +1093,30 @@
     }
 
     function parseNumber(str) {
-      if (str === null || str === undefined) return 0;
+      if (!str) return 0;
       var s = String(str).trim();
       if (!s) return 0;
       var neg = s.charAt(0) === "-";
       var digits = s.replace(/\D/g, "");
       if (!digits) return 0;
       var n = parseInt(digits, 10);
-      if (!isFinite(n)) return 0;
-      return neg ? -n : n;
-    }
-
-    function countDigitsBefore(str, pos) {
-      var slice = String(str).slice(0, Math.max(0, pos));
-      return (slice.match(/\d/g) || []).length;
-    }
-
-    function caretFromDigits(formatted, digitCount) {
-      if (digitCount <= 0) {
-        return formatted.charAt(0) === "-" ? 1 : 0;
-      }
-      var seen = 0;
-      for (var i = 0; i < formatted.length; i++) {
-        if (/\d/.test(formatted.charAt(i))) {
-          seen++;
-          if (seen >= digitCount) return i + 1;
-        }
-      }
-      return formatted.length;
+      return isFinite(n) ? (neg ? -n : n) : 0;
     }
 
     const invIdMap = {
-      "inv-1a": "hargaSebelumA",
-      "inv-2a": "hargaSetelahA",
-      "inv-1b": "hargaSebelumB",
-      "inv-2b": "hargaSetelahB",
-      "inv-1c": "hargaSebelumC",
-      "inv-2c": "hargaSetelahC",
-      "inv-3": "subtotalProduk",
-      "inv-4": "subtotalPengiriman",
-      "inv-5": "diskonPengiriman",
-      "inv-6": "voucher",
-      "inv-6b": "voucherToko",
-      "inv-7": "biayaLayanan",
-      "inv-8": "total"
+      "inv-1a": "hargaSebelumA", "inv-2a": "hargaSetelahA",
+      "inv-1b": "hargaSebelumB", "inv-2b": "hargaSetelahB",
+      "inv-1c": "hargaSebelumC", "inv-2c": "hargaSetelahC",
+      "inv-3": "subtotalProduk", "inv-4": "subtotalPengiriman",
+      "inv-5": "diskonPengiriman", "inv-6": "voucher",
+      "inv-6b": "voucherToko", "inv-7": "biayaLayanan", "inv-8": "total"
     };
 
-    const FORCE_NEGATIVE = {
-      voucher: true,
-      voucherToko: true,
-      diskonPengiriman: true
-    };
-
-    const PAIR_MAP = {
-      hargaSebelumA: "hargaSetelahA",
-      hargaSebelumB: "hargaSetelahB",
-      hargaSebelumC: "hargaSetelahC"
-    };
-
-    const AFTER_KEYS = ["hargaSetelahA", "hargaSetelahB", "hargaSetelahC"];
-    const BEFORE_KEYS = ["hargaSebelumA", "hargaSebelumB", "hargaSebelumC"];
+    const FORCE_NEGATIVE = { voucher: true, voucherToko: true, diskonPengiriman: true };
+    const PAIR_MAP = { hargaSebelumA: "hargaSetelahA", hargaSebelumB: "hargaSetelahB", hargaSebelumC: "hargaSetelahC" };
 
     function applyForceSign(key, num) {
-      if (!FORCE_NEGATIVE[key]) return num;
-      if (num === 0) return 0;
+      if (!FORCE_NEGATIVE[key] || num === 0) return num;
       return -Math.abs(num);
     }
 
@@ -1518,78 +1128,30 @@
         }
       });
 
-      invState.subtotalProduk.value =
-        invState.hargaSetelahA.value +
-        invState.hargaSetelahB.value +
-        invState.hargaSetelahC.value;
-      invState.subtotalProduk.manual = false;
-
+      invState.subtotalProduk.value = invState.hargaSetelahA.value + invState.hargaSetelahB.value + invState.hargaSetelahC.value;
       if (!invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
       }
 
       invState.total.value =
-        invState.subtotalProduk.value +
-        invState.subtotalPengiriman.value +
-        invState.diskonPengiriman.value +
-        invState.voucher.value +
-        invState.voucherToko.value +
-        invState.biayaLayanan.value;
+        invState.subtotalProduk.value + invState.subtotalPengiriman.value +
+        invState.diskonPengiriman.value + invState.voucher.value +
+        invState.voucherToko.value + invState.biayaLayanan.value;
     }
 
     function renderField(id, key) {
       var el = document.getElementById(id);
-      if (!el) return;
-      if (document.activeElement === el) return;
-
-      var st = invState[key];
-      var val = st.value;
+      if (!el || document.activeElement === el) return;
+      var val = invState[key].value;
       el.value = formatNumber(val);
       el.classList.toggle("is-default", val === 0);
       el.classList.toggle("negative", val < 0);
-      if (key === "total" || key === "subtotalProduk") {
-        el.classList.add("is-readonly");
-      }
+      if (key === "total" || key === "subtotalProduk") el.classList.add("is-readonly");
     }
 
     function updateInvoiceUI() {
       recalculate();
-      Object.keys(invIdMap).forEach(function (id) {
-        renderField(id, invIdMap[id]);
-      });
-    }
-
-    function syncStateFromInputs() {
-      Object.keys(invIdMap).forEach(function (id) {
-        var key = invIdMap[id];
-        if (key === "total" || key === "subtotalProduk") return;
-        var el = document.getElementById(id);
-        if (!el) return;
-        invState[key].value = applyForceSign(key, parseNumber(el.value));
-      });
-      recalculate();
-    }
-
-    function setFormattedValue(el, num) {
-      var prev = el.value;
-      var pos = (typeof el.selectionStart === "number") ? el.selectionStart : prev.length;
-      var digitsBefore = countDigitsBefore(prev, pos);
-      var prevDigitCount = (prev.match(/\d/g) || []).length;
-
-      var formatted = formatNumber(num);
-      var newDigitCount = (formatted.match(/\d/g) || []).length;
-
-      el.value = formatted;
-
-      var newPos;
-      if (newDigitCount > prevDigitCount) {
-        newPos = formatted.length;
-      } else {
-        newPos = caretFromDigits(formatted, Math.min(digitsBefore, newDigitCount));
-      }
-      try {
-        el.setSelectionRange(newPos, newPos);
-      } catch (_) {}
+      Object.keys(invIdMap).forEach(function (id) { renderField(id, invIdMap[id]); });
     }
 
     function onInvInput(e) {
@@ -1601,173 +1163,28 @@
       invState[key].value = num;
       invState[key].manual = true;
 
-      if (PAIR_MAP[key]) {
-        var afterKey = PAIR_MAP[key];
-        if (!invState[afterKey].manual && num !== 0) {
-          invState[afterKey].value = num;
-        }
+      if (PAIR_MAP[key] && !invState[PAIR_MAP[key]].manual && num !== 0) {
+        invState[PAIR_MAP[key]].value = num;
       }
-
       if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = num * -1;
       }
 
-      setFormattedValue(el, num);
-      el.classList.toggle("is-default", num === 0);
-      el.classList.toggle("negative", num < 0);
-
-      recalculate();
-      Object.keys(invIdMap).forEach(function (id) {
-        var k = invIdMap[id];
-        if (k === key) return;
-        renderField(id, k);
-      });
-    }
-
-    function onInvFocus(e) {
-      var el = e.target;
-      if (el.classList.contains("is-readonly")) return;
-      setTimeout(function () {
-        try { el.select(); } catch (_) {}
-      }, 10);
-    }
-
-    function onInvBlur(e) {
-      var el = e.target;
-      var key = el.dataset.key;
-      if (!key || key === "total" || key === "subtotalProduk") return;
-
-      var raw = el.value.trim();
-      var isEmpty = (raw === "" || raw === "0" || raw === "-" || raw === "-0");
-
-      if (isEmpty) {
-        invState[key].value = 0;
-        invState[key].manual = false;
-      } else {
-        var num = applyForceSign(key, parseNumber(raw));
-        invState[key].value = num;
-
-        if (AFTER_KEYS.indexOf(key) !== -1) {
-          var beforeKey = null;
-          Object.keys(PAIR_MAP).forEach(function (bk) {
-            if (PAIR_MAP[bk] === key) beforeKey = bk;
-          });
-          if (beforeKey && invState[beforeKey].value !== 0 && num === invState[beforeKey].value) {
-            invState[key].manual = false;
-          } else {
-            invState[key].manual = true;
-          }
-        } else if (key === "diskonPengiriman") {
-          var expected = invState.subtotalPengiriman.value * -1;
-          invState[key].manual = (num !== expected);
-        } else {
-          invState[key].manual = true;
-        }
-      }
-
-      updateInvoiceUI();
-    }
-
-    function focusNextInvField(currentEl) {
-      var order = ["tokoAsli", "tokoTujuan", "inv-1a", "inv-2a", "inv-1b", "inv-2b", "inv-1c", "inv-2c", "inv-4", "inv-5", "inv-6", "inv-6b", "inv-7"];
-      var id = currentEl.id;
-      var idx = order.indexOf(id);
-      if (idx < 0) return;
-      var nextId = order[idx + 1];
-      if (!nextId) return;
-      var next = document.getElementById(nextId);
-      if (next) {
-        next.focus();
-        try { next.select(); } catch (_) {}
-      }
-    }
-
-    function onInvKeydown(e) {
-      var el = e.target;
-      var key = el.dataset.key;
-
-      if (e.key === "Enter") {
-        e.preventDefault();
-        focusNextInvField(el);
-        return;
-      }
-
-      var allowedNav = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Home", "End", "Escape"];
-      if (allowedNav.indexOf(e.key) !== -1) return;
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-      if (/^\d$/.test(e.key)) return;
-
-      if (e.key === "-") {
-        if (FORCE_NEGATIVE[key]) {
-          e.preventDefault();
-          return;
-        }
-        var start = el.selectionStart || 0;
-        var end = el.selectionEnd || 0;
-        var hasMinus = el.value.indexOf("-") !== -1;
-        if ((start === 0 && end === el.value.length) || (start === 0 && !hasMinus)) return;
-        e.preventDefault();
-        return;
-      }
-
-      e.preventDefault();
-    }
-
-    function onInvPaste(e) {
-      var el = e.target;
-      var key = el.dataset.key;
-      if (!key || key === "total" || key === "subtotalProduk") return;
-      e.preventDefault();
-      var paste = "";
-      try {
-        paste = (e.clipboardData || window.clipboardData).getData("text") || "";
-      } catch (_) {}
-      var num = applyForceSign(key, parseNumber(paste));
-      invState[key].value = num;
-      invState[key].manual = true;
       el.value = formatNumber(num);
-      try { el.setSelectionRange(el.value.length, el.value.length); } catch (_) {}
       el.classList.toggle("is-default", num === 0);
       el.classList.toggle("negative", num < 0);
 
-      if (PAIR_MAP[key]) {
-        var afterKey = PAIR_MAP[key];
-        if (!invState[afterKey].manual && num !== 0) {
-          invState[afterKey].value = num;
-        }
-      }
-      if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
-        invState.diskonPengiriman.value = num * -1;
-      }
       recalculate();
       Object.keys(invIdMap).forEach(function (id) {
-        var k = invIdMap[id];
-        if (k === key) return;
-        renderField(id, k);
+        if (invIdMap[id] !== key) renderField(id, invIdMap[id]);
       });
     }
 
     function initInvoiceInputs() {
-      var ids = ["inv-1a", "inv-2a", "inv-1b", "inv-2b", "inv-1c", "inv-2c", "inv-4", "inv-5", "inv-6", "inv-6b", "inv-7"];
-      ids.forEach(function (id) {
+      Object.keys(invIdMap).forEach(function (id) {
         var el = document.getElementById(id);
         if (!el) return;
         el.addEventListener("input", onInvInput);
-        el.addEventListener("focus", onInvFocus);
-        el.addEventListener("blur", onInvBlur);
-        el.addEventListener("keydown", onInvKeydown);
-        el.addEventListener("paste", onInvPaste);
-      });
-      ["tokoAsli", "tokoTujuan"].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            focusNextInvField(el);
-          }
-        });
       });
       updateInvoiceUI();
     }
@@ -1784,8 +1201,6 @@
 
     function copyInvoiceDetail(btn) {
       if (btn) createRipple(btn);
-
-      syncStateFromInputs();
       updateInvoiceUI();
 
       var tokoAsli = (document.getElementById("tokoAsli") || {}).value || "";
@@ -1794,14 +1209,9 @@
       tokoTujuan = String(tokoTujuan).trim();
 
       var lines = [];
-
-      if (tokoAsli && tokoTujuan) {
-        lines.push("Ubah Nama Toko \"" + tokoAsli + "\" menjadi \"" + tokoTujuan + "\"");
-      } else if (tokoAsli) {
-        lines.push("Ubah Nama Toko \"" + tokoAsli + "\"");
-      } else if (tokoTujuan) {
-        lines.push("Ubah Nama Toko menjadi \"" + tokoTujuan + "\"");
-      }
+      if (tokoAsli && tokoTujuan) lines.push("Ubah Nama Toko \"" + tokoAsli + "\" menjadi \"" + tokoTujuan + "\"");
+      else if (tokoAsli) lines.push("Ubah Nama Toko \"" + tokoAsli + "\"");
+      else if (tokoTujuan) lines.push("Ubah Nama Toko menjadi \"" + tokoTujuan + "\"");
 
       var pairs = [
         { before: "hargaSebelumA", after: "hargaSetelahA", num: "1" },
@@ -1813,104 +1223,35 @@
         var before = invState[p.before].value;
         var after = invState[p.after].value;
         if (before === 0 && after === 0) return;
-
-        if (before === 0 && after !== 0) {
-          lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(after));
-          return;
-        }
-
-        if (before !== 0 && after !== 0 && before === after) {
-          lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(before));
-          return;
-        }
-
-        if (before !== 0) {
-          lines.push(invLabels[p.before] + " ubah menjadi " + formatRp(before));
-        }
-        if (after !== 0) {
-          lines.push(invLabels[p.after] + " ubah menjadi " + formatRp(after));
-        }
+        if (before === 0 && after !== 0) { lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(after)); return; }
+        if (before !== 0 && after !== 0 && before === after) { lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(before)); return; }
+        if (before !== 0) lines.push(invLabels[p.before] + " ubah menjadi " + formatRp(before));
+        if (after !== 0) lines.push(invLabels[p.after] + " ubah menjadi " + formatRp(after));
       });
 
       if (invState.subtotalProduk.value !== 0) {
         lines.push(invLabels.subtotalProduk + " ubah menjadi " + formatRp(invState.subtotalProduk.value));
       }
 
-      var restOrder = [
-        "subtotalPengiriman",
-        "diskonPengiriman",
-        "voucher",
-        "voucherToko",
-        "biayaLayanan",
-        "total"
-      ];
-
-      restOrder.forEach(function (key) {
+      ["subtotalPengiriman", "diskonPengiriman", "voucher", "voucherToko", "biayaLayanan", "total"].forEach(function (key) {
         var st = invState[key];
-        if (!st || st.value === 0) return;
-        lines.push(invLabels[key] + " ubah menjadi " + formatRp(st.value));
+        if (st && st.value !== 0) lines.push(invLabels[key] + " ubah menjadi " + formatRp(st.value));
       });
 
       var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominal dan nama tokonya saja jika aku ada perintah ubah nama toko.\n\nUbah Nominal Invoice Menjadi:\n\n";
-      if (lines.length === 0) {
-        text += "(Belum ada nominal yang diisi)\n\n";
-      } else {
-        text += lines.join("\n\n") + "\n\n";
-      }
+      text += (lines.length === 0 ? "(Belum ada nominal yang diisi)\n\n" : lines.join("\n\n") + "\n\n");
       text += "Tanpa sedikitpun merubah dimensi gambar, tingkatkan kualitas, tingkatkan kontras, tapi buat font type, font size dan font color sama persis dan pastikan tidak tampak kalau sudah diedit invoice ini.";
 
       copyText(text, btn);
     }
 
-    /* ===== EXISTING HELPERS ===== */
+    /* ===== GENERAL RENDER & HELPERS ===== */
     function escapeAttr(s) {
       return String(s).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, "&quot;");
     }
 
-    function renderAddresses() {
-      const container = document.getElementById("alamatList");
-      if (!container) return;
-      container.innerHTML = addresses.map(function (a) {
-        var nameEsc = escapeAttr(a.name);
-        var numEsc = escapeAttr(a.number);
-        var addrEsc = escapeAttr(a.address);
-        var labelEsc = escapeAttr(a.label);
-        return (
-          '<div class="addr-card">' +
-            '<div class="addr-label">' +
-              '<span class="material-symbols-rounded" aria-hidden="true">' + a.icon + '</span>' +
-              a.label +
-            '</div>' +
-            '<div class="addr-row">' +
-              '<div class="addr-info">' +
-                '<div class="addr-key">Nama</div>' +
-                '<div class="addr-val">' + a.name + '</div>' +
-              '</div>' +
-              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + nameEsc + '\', this)" aria-label="Salin nama ' + labelEsc + '" title="Salin nama">' +
-                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
-              '</button>' +
-            '</div>' +
-            '<div class="addr-row">' +
-              '<div class="addr-info">' +
-                '<div class="addr-key">Nomor</div>' +
-                '<div class="addr-val mono">' + a.number + '</div>' +
-              '</div>' +
-              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + numEsc + '\', this)" aria-label="Salin nomor ' + labelEsc + '" title="Salin nomor">' +
-                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
-              '</button>' +
-            '</div>' +
-            '<div class="addr-row">' +
-              '<div class="addr-info">' +
-                '<div class="addr-key">Alamat</div>' +
-                '<div class="addr-val addr-text">' + a.address + '</div>' +
-              '</div>' +
-              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + addrEsc + '\', this)" aria-label="Salin alamat ' + labelEsc + '" title="Salin alamat">' +
-                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
-              '</button>' +
-            '</div>' +
-          '</div>'
-        );
-      }).join("");
+    function escapeHtml(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     function renderContacts() {
@@ -1950,6 +1291,52 @@
       `).join("");
     }
 
+    function renderAddresses() {
+      const container = document.getElementById("alamatList");
+      if (!container) return;
+      container.innerHTML = addresses.map(function (a) {
+        var nameEsc = escapeAttr(a.name);
+        var numEsc = escapeAttr(a.number);
+        var addrEsc = escapeAttr(a.address);
+        var labelEsc = escapeAttr(a.label);
+        return (
+          '<div class="addr-card">' +
+            '<div class="addr-label">' +
+              '<span class="material-symbols-rounded" aria-hidden="true">' + a.icon + '</span>' +
+              a.label +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Nama</div>' +
+                '<div class="addr-val">' + a.name + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + nameEsc + '\', this)" aria-label="Salin nama ' + labelEsc + '">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Nomor</div>' +
+                '<div class="addr-val">' + a.number + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + numEsc + '\', this)" aria-label="Salin nomor ' + labelEsc + '">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Alamat</div>' +
+                '<div class="addr-val addr-text">' + a.address + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + addrEsc + '\', this)" aria-label="Salin alamat ' + labelEsc + '">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join("");
+    }
+
     function createRipple(btn, e) {
       if (!btn) return;
       const rect = btn.getBoundingClientRect();
@@ -1968,19 +1355,22 @@
     function copyText(text, btn, e) {
       if (btn) {
         createRipple(btn, e);
-        try { btn.blur(); } catch (_) {}
-      }
-      if (!text) {
-        showToast("Tidak ada data");
-        return;
+        // Visual button feedback animation
+        btn.classList.add("copied-state");
+        const icon = btn.querySelector(".material-symbols-rounded");
+        const oldIcon = icon ? icon.textContent : "";
+        if (icon) icon.textContent = "check";
+
+        setTimeout(() => {
+          btn.classList.remove("copied-state");
+          if (icon) icon.textContent = oldIcon;
+        }, 1100);
       }
 
+      if (!text) { showToast("Tidak ada data"); return; }
+
       if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-        navigator.clipboard.writeText(text).then(function () {
-          showToast("Berhasil disalin");
-        }).catch(function () {
-          fallbackCopy(text);
-        });
+        navigator.clipboard.writeText(text).then(() => showToast("Berhasil disalin")).catch(() => fallbackCopy(text));
       } else {
         fallbackCopy(text);
       }
@@ -1990,38 +1380,19 @@
       var ta = document.createElement("textarea");
       ta.value = text;
       ta.setAttribute("readonly", "");
-      ta.style.cssText = "position:fixed;top:0;left:0;width:2em;height:2em;padding:0;margin:0;border:none;outline:none;box-shadow:none;background:transparent;opacity:0.01;z-index:99999;font-size:16px;";
+      ta.style.cssText = "position:fixed;top:0;left:0;opacity:0.01;z-index:99999;";
       document.body.appendChild(ta);
-
       var ok = false;
       try {
-        ta.focus();
-        ta.select();
-        ta.setSelectionRange(0, text.length);
+        ta.focus(); ta.select();
         ok = document.execCommand("copy");
-      } catch (err) {
-        ok = false;
-      }
-
+      } catch (_) { ok = false; }
       try { document.body.removeChild(ta); } catch (_) {}
-
-      if (ok) {
-        showToast("Berhasil disalin");
-      } else {
-        try {
-          window.prompt("Salin teks di bawah ini (Ctrl+C / Cmd+C):", text);
-          showToast("Salin manual dari kotak dialog");
-        } catch (_) {
-          showToast("Gagal menyalin");
-        }
-      }
+      showToast(ok ? "Berhasil disalin" : "Gagal menyalin");
     }
 
     function copyDetailXL(btn) {
-      const text = `Nama : Ridwan Budi Laksono
-ID XL Satu : 11832647
-Nomor Terdaftar : 085777773541
-Email : ridwan.budilaksono@gmail.com`;
+      const text = `Nama : Ridwan Budi Laksono\nID XL Satu : 11832647\nNomor Terdaftar : 085777773541\nEmail : ridwan.budilaksono@gmail.com`;
       copyText(text, btn);
     }
 
@@ -2030,28 +1401,17 @@ Email : ridwan.budilaksono@gmail.com`;
       document.getElementById("toastMsg").textContent = message;
       toast.classList.add("show");
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 1700);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
     }
 
     function openWhatsApp(number) {
       let cleaned = String(number).replace(/\D/g, "");
       if (cleaned.startsWith("0")) cleaned = "62" + cleaned.slice(1);
       else if (!cleaned.startsWith("62")) cleaned = "62" + cleaned;
-      const url = "https://wa.me/" + cleaned;
-      try {
-        const a = document.createElement("a");
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      } catch (_) {
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
+      window.open("https://wa.me/" + cleaned, "_blank", "noopener,noreferrer");
     }
 
+    /* ===== ULTRA SMOOTH TABS SWITCHING ===== */
     const tabsWrapper = document.getElementById("tabsWrapper");
 
     function setTransform(pct, withTransition) {
@@ -2074,51 +1434,13 @@ Email : ridwan.budilaksono@gmail.com`;
       const next = ((index % totalTabs) + totalTabs) % totalTabs;
       if (next === currentTab) return;
 
-      const prev = currentTab;
       isAnimating = true;
       currentTab = next;
       updateNavAndHeader();
 
-      // Karena 6 tab: posisi 0, -16.666%, -33.333%, -50%, -66.666%, -83.333%
-      const step = 100 / totalTabs; 
-      
-      const isWrapForward = prev === (totalTabs - 1) && next === 0;
-      const isWrapBackward = prev === 0 && next === (totalTabs - 1);
-
-      if (isWrapForward) {
-        setTransform(-100, true);
-        const onEnd = (e) => {
-          if (e.propertyName !== "transform") return;
-          tabsWrapper.removeEventListener("transitionend", onEnd);
-          setTransform(0, false);
-          void tabsWrapper.offsetWidth;
-          tabsWrapper.style.transition = TRANSITION;
-          isAnimating = false;
-        };
-        tabsWrapper.addEventListener("transitionend", onEnd);
-        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
-      } else if (isWrapBackward) {
-        setTransform(step, true);
-        const onEnd = (e) => {
-          if (e.propertyName !== "transform") return;
-          tabsWrapper.removeEventListener("transitionend", onEnd);
-          setTransform(-(totalTabs - 1) * step, false);
-          void tabsWrapper.offsetWidth;
-          tabsWrapper.style.transition = TRANSITION;
-          isAnimating = false;
-        };
-        tabsWrapper.addEventListener("transitionend", onEnd);
-        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
-      } else {
-        setTransform(-(next * step), true);
-        const onEnd = (e) => {
-          if (e.propertyName !== "transform") return;
-          tabsWrapper.removeEventListener("transitionend", onEnd);
-          isAnimating = false;
-        };
-        tabsWrapper.addEventListener("transitionend", onEnd);
-        setTimeout(() => { isAnimating = false; }, TAB_DURATION + 40);
-      }
+      const step = 100 / totalTabs;
+      setTransform(-(next * step), true);
+      setTimeout(() => { isAnimating = false; }, TAB_DURATION + 30);
     }
 
     function updateUI() {
@@ -2127,8 +1449,98 @@ Email : ridwan.budilaksono@gmail.com`;
       updateNavAndHeader();
     }
 
+    /* ===== TAB LAPORAN LOGIC (CORRECTED TEXT FORMULA) ===== */
+    const rawLaporanTemplates = [
+      {
+        id: "gaji",
+        label: "Perbandingan Gaji",
+        /* PERBAIKAN TEKS PERSIS SESUAI KOREKSI */
+        template: (bIni, tIni, bSblm, tSblm) => `Perbandingan Gaji Bulan *${bIni} ${tIni}* Dengan Gaji Bulan *${bSblm} ${tSblm}*`
+      },
+      {
+        id: "bonus",
+        label: "Bonus Karyawan",
+        template: (bIni, tIni) => `Bonus Karyawan *${bIni} ${tIni}*`
+      },
+      {
+        id: "thr",
+        label: "Rekap THR Maestro",
+        template: (bIni, tIni) => `REKAP DATA THR MAESTRO - ${tIni}`
+      },
+      { id: "m1", label: "Maestro Gilingan", template: (bIni, tIni) => `*1. MAESTRO GILINGAN - ${bIni} ${tIni}*` },
+      { id: "m2", label: "Maestro Solo Baru", template: (bIni, tIni) => `*2. MAESTRO SOLO BARU - ${bIni} ${tIni}*` },
+      { id: "m3", label: "Maestro Pabelan", template: (bIni, tIni) => `*3. MAESTRO PABELAN - ${bIni} ${tIni}*` },
+      { id: "m4", label: "Divisi Salon", template: (bIni, tIni) => `*4. DIVISI SALON - ${bIni} ${tIni}*` },
+      { id: "m5", label: "Divisi Jog", template: (bIni, tIni) => `*5. DIVISI JOG - ${bIni} ${tIni}*` },
+      { id: "m6", label: "Divisi Kaca Film", template: (bIni, tIni) => `*6. DIVISI KACA FILM - ${bIni} ${tIni}*` }
+    ];
+
+    function updateLaporanCards() {
+      const bIni = (document.getElementById("lapBulanIni").value || "").trim() || "BULAN INI";
+      const tIni = (document.getElementById("lapTahunIni").value || "").trim() || "TAHUN INI";
+      const bSblm = (document.getElementById("lapBulanSebelumnya").value || "").trim() || "BULAN SEBELUMNYA";
+      const tSblm = (document.getElementById("lapTahunSebelumnya").value || "").trim() || "TAHUN MENYESUAIKAN";
+
+      const container = document.getElementById("laporanList");
+      container.innerHTML = rawLaporanTemplates.map((item) => {
+        const fullText = item.template(bIni, tIni, bSblm, tSblm);
+        const escapedText = escapeAttr(fullText);
+        const displayHtml = escapeHtml(fullText);
+
+        return `
+          <div class="laporan-card">
+            <div class="laporan-info">
+              <div class="laporan-label">${item.label}</div>
+              <div class="laporan-text">${displayHtml}</div>
+            </div>
+            <button type="button" class="btn btn-copy" onclick="copyText('${escapedText}', this)" aria-label="Salin ${item.label}">
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function initLaporanVariables() {
+      const currentDate = new Date();
+      const currentDay = currentDate.getDate();
+      let monthIdx = currentDate.getMonth();
+      let yearNum = currentDate.getFullYear();
+
+      // Aturan Tanggal 28-31 adalah bulan berjalan, 1-27 mundur 1 bulan
+      let targetMonthIdx = monthIdx;
+      let targetYearNum = yearNum;
+      if (currentDay < 28) {
+        targetMonthIdx = monthIdx - 1;
+        if (targetMonthIdx < 0) {
+          targetMonthIdx = 11;
+          targetYearNum -= 1;
+        }
+      }
+
+      let prevMonthIdx = targetMonthIdx - 1;
+      let prevYearNum = targetYearNum;
+      if (prevMonthIdx < 0) {
+        prevMonthIdx = 11;
+        prevYearNum -= 1;
+      }
+
+      const months = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
+
+      document.getElementById("lapBulanIni").value = months[targetMonthIdx];
+      document.getElementById("lapTahunIni").value = targetYearNum;
+      document.getElementById("lapBulanSebelumnya").value = months[prevMonthIdx];
+      document.getElementById("lapTahunSebelumnya").value = prevYearNum;
+
+      ["lapBulanIni", "lapTahunIni", "lapBulanSebelumnya", "lapTahunSebelumnya"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", updateLaporanCards);
+      });
+
+      updateLaporanCards();
+    }
+
+    /* ===== ULTRA SMOOTH TOUCH SWIPING ===== */
     let touchStartX = 0, touchStartY = 0, isSwiping = false;
-    const SWIPE_THRESHOLD = 48;
     const main = document.getElementById("appMain");
 
     main.addEventListener("touchstart", (e) => {
@@ -2146,105 +1558,27 @@ Email : ridwan.budilaksono@gmail.com`;
     main.addEventListener("touchend", (e) => {
       if (!isSwiping || isAnimating) return;
       const diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) >= SWIPE_THRESHOLD) {
+      if (Math.abs(diff) >= 42) {
         switchTab(diff < 0 ? currentTab + 1 : currentTab - 1);
       }
-      isSwiping = false;
     }, { passive: true });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") switchTab(currentTab - 1);
-      if (e.key === "ArrowRight") switchTab(currentTab + 1);
-    });
-
-    /* ===== GENERATE LAPORAN TEXTS ===== */
-    function renderLaporan() {
-      const currentDate = new Date();
-      const currentDay = currentDate.getDate();
-      let monthIndex = currentDate.getMonth(); 
-      let yearNumber = currentDate.getFullYear();
-      let isBulanIni = false;
-
-      // Jika tanggal 28, 29, 30, 31 maka menggunakan bulan ini.
-      if (currentDay >= 28) {
-        isBulanIni = true;
-      }
-
-      let targetMonthIndex = monthIndex;
-      let targetYearNumber = yearNumber;
-      
-      // Jika tanggal 1-27, maka bulan ini dianggap sebagai bulan sebelumnya.
-      if (!isBulanIni) {
-        targetMonthIndex = monthIndex - 1;
-        if (targetMonthIndex < 0) {
-          targetMonthIndex = 11;
-          targetYearNumber -= 1;
-        }
-      }
-
-      // Hitung bulan sebelumnya dari target bulan ini
-      let prevMonthIndex = targetMonthIndex - 1;
-      let prevYearNumber = targetYearNumber;
-      if (prevMonthIndex < 0) {
-        prevMonthIndex = 11;
-        prevYearNumber -= 1;
-      }
-
-      const bulanArray = [
-        "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
-        "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
-      ];
-
-      const bulanIniStr = bulanArray[targetMonthIndex];
-      const bulanSebelumnyaStr = bulanArray[prevMonthIndex];
-
-      const currentYearOnly = currentDate.getFullYear();
-
-      // Template teks
-      const texts = [
-        `Perbandingan Gaji Bulan *${bulanIniStr} ${targetYearNumber}* Dengan  Perbandingan Gaji 2026  Bulan *${bulanSebelumnyaStr} ${prevYearNumber}*`,
-        `Bonus Karyawan *${bulanIniStr} ${targetYearNumber}*`,
-        `REKAP DATA THR MAESTRO - ${currentYearOnly}`,
-        `*1. MAESTRO GILINGAN - ${bulanIniStr} ${targetYearNumber}*`,
-        `*2. MAESTRO SOLO BARU - ${bulanIniStr} ${targetYearNumber}*`,
-        `*3. MAESTRO PABELAN - ${bulanIniStr} ${targetYearNumber}*`,
-        `*4. DIVISI SALON - ${bulanIniStr} ${targetYearNumber}*`,
-        `*5. DIVISI JOG - ${bulanIniStr} ${targetYearNumber}*`,
-        `*6. DIVISI KACA FILM - ${bulanIniStr} ${targetYearNumber}*`
-      ];
-
-      const container = document.getElementById("laporanList");
-      container.innerHTML = texts.map((text, i) => {
-        const escapedText = escapeAttr(text);
-        return `
-          <div class="laporan-text-card">
-            <div class="laporan-text">${text.replace(/\n/g, "<br>")}</div>
-            <button type="button" class="btn btn-copy" onclick="copyText('${escapedText}', this)" aria-label="Salin teks laporan" title="Salin">
-              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
-            </button>
-          </div>
-        `;
-      }).join("");
-    }
-
-    // Reveal icons only after Material Symbols font is ready
     function revealIcons() {
       document.documentElement.classList.add("fonts-ready");
     }
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(revealIcons).catch(revealIcons);
-      setTimeout(revealIcons, 1200);
     } else {
       revealIcons();
     }
 
-    // Init
+    // Init App
     renderContacts();
     renderNikList(nikKeluarga, "nikKeluargaList");
     renderNikList(nikOrtu, "nikOrtuList");
     renderAddresses();
     initInvoiceInputs();
-    renderLaporan(); // Init tab laporan
+    initLaporanVariables();
     updateUI();
   </script>
 </body>
