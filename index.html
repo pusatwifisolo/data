@@ -563,6 +563,73 @@
       margin-bottom: 10px;
     }
 
+    .store-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .store-card .card-title {
+      margin-bottom: 8px;
+    }
+
+    .store-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .store-field {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .store-field label {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    .store-input {
+      width: 100%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(248, 250, 252, 0.9);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      padding: 7px 9px;
+      border-radius: 8px;
+      outline: none;
+      transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 34px;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
+
+    .store-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .store-input:hover {
+      border-color: rgba(148, 163, 184, 0.45);
+      background: #fff;
+    }
+
+    .store-input:focus {
+      background: #fff;
+      border-color: rgba(37, 99, 235, 0.45);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
+    }
+
     .invoice-table {
       width: 100%;
       border-collapse: collapse;
@@ -982,12 +1049,29 @@
 
       <!-- TAB 3: Invoice -->
       <section class="tab-panel" id="tab-invoice" aria-label="Invoice">
+        <div class="store-card">
+          <div class="card-title blue">
+            <span class="material-symbols-rounded" aria-hidden="true">storefront</span>
+            Ubah Toko
+          </div>
+          <div class="store-row">
+            <div class="store-field">
+              <label for="tokoAsli">Nama Toko Asli</label>
+              <input type="text" class="store-input" id="tokoAsli" placeholder="Toko asal..." autocomplete="off" aria-label="Nama toko asli">
+            </div>
+            <div class="store-field">
+              <label for="tokoTujuan">Nama Toko Tujuan</label>
+              <input type="text" class="store-input" id="tokoTujuan" placeholder="Toko ganti..." autocomplete="off" aria-label="Nama toko tujuan">
+            </div>
+          </div>
+        </div>
+
         <div class="invoice-card">
           <table class="invoice-table" aria-label="Tabel Invoice">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Nama item</th>
+                <th>Nama Item</th>
                 <th>Rp</th>
                 <th>Nominal</th>
               </tr>
@@ -995,51 +1079,81 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Harga sebelum dicoret</td>
+                <td>Harga Sebelum Dicoret A</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1" data-key="hargaSebelum" placeholder="0" autocomplete="off" aria-label="Harga sebelum dicoret"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1a" data-key="hargaSebelumA" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret A"></td>
               </tr>
               <tr>
                 <td>2</td>
-                <td>Harga setelah dicoret</td>
+                <td>Harga Setelah Dicoret A</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2" data-key="hargaSetelah" placeholder="0" autocomplete="off" aria-label="Harga setelah dicoret"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2a" data-key="hargaSetelahA" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret A"></td>
               </tr>
               <tr>
                 <td>3</td>
-                <td>Subtotal produk</td>
+                <td>Harga Sebelum Dicoret B</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-3" data-key="subtotalProduk" placeholder="0" autocomplete="off" aria-label="Subtotal produk"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1b" data-key="hargaSebelumB" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret B"></td>
               </tr>
               <tr>
                 <td>4</td>
-                <td>Subtotal pengiriman</td>
+                <td>Harga Setelah Dicoret B</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-4" data-key="subtotalPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal pengiriman"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2b" data-key="hargaSetelahB" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret B"></td>
               </tr>
               <tr>
                 <td>5</td>
-                <td>Subtotal diskon pengiriman</td>
+                <td>Harga Sebelum Dicoret C</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-5" data-key="diskonPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal diskon pengiriman"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1c" data-key="hargaSebelumC" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret C"></td>
               </tr>
               <tr>
                 <td>6</td>
-                <td>Voucher shopee digunakan</td>
+                <td>Harga Setelah Dicoret C</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-6" data-key="voucher" placeholder="0" autocomplete="off" aria-label="Voucher shopee digunakan"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2c" data-key="hargaSetelahC" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret C"></td>
               </tr>
               <tr>
                 <td>7</td>
-                <td>Biaya layanan</td>
+                <td>Subtotal Produk</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-7" data-key="biayaLayanan" placeholder="0" autocomplete="off" aria-label="Biaya layanan"></td>
+                <td><input type="text" class="inv-input is-readonly is-default" id="inv-3" data-key="subtotalProduk" value="0" readonly tabindex="-1" aria-label="Subtotal Produk (otomatis)"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Subtotal Pengiriman</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-4" data-key="subtotalPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal Pengiriman"></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Subtotal Diskon Pengiriman</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-5" data-key="diskonPengiriman" placeholder="0" autocomplete="off" aria-label="Subtotal Diskon Pengiriman"></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Voucher Shopee Digunakan</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-6" data-key="voucher" placeholder="0" autocomplete="off" aria-label="Voucher Shopee Digunakan"></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Voucher Toko Digunakan</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-6b" data-key="voucherToko" placeholder="0" autocomplete="off" aria-label="Voucher Toko Digunakan"></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Biaya Layanan</td>
+                <td>Rp</td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-7" data-key="biayaLayanan" placeholder="0" autocomplete="off" aria-label="Biaya Layanan"></td>
               </tr>
               <tr class="inv-row-total">
-                <td>8</td>
-                <td>Total pesanan</td>
+                <td>13</td>
+                <td>Total Pesanan</td>
                 <td>Rp</td>
-                <td><input type="text" class="inv-input is-readonly is-default" id="inv-8" data-key="total" value="0" readonly tabindex="-1" aria-label="Total pesanan (otomatis)"></td>
+                <td><input type="text" class="inv-input is-readonly is-default" id="inv-8" data-key="total" value="0" readonly tabindex="-1" aria-label="Total Pesanan (otomatis)"></td>
               </tr>
             </tbody>
           </table>
@@ -1120,25 +1234,35 @@
 
     /* ===== INVOICE STATE ===== */
     const invState = {
-      hargaSebelum: { value: 0, manual: false },
-      hargaSetelah: { value: 0, manual: false },
+      hargaSebelumA: { value: 0, manual: false },
+      hargaSetelahA: { value: 0, manual: false },
+      hargaSebelumB: { value: 0, manual: false },
+      hargaSetelahB: { value: 0, manual: false },
+      hargaSebelumC: { value: 0, manual: false },
+      hargaSetelahC: { value: 0, manual: false },
       subtotalProduk: { value: 0, manual: false },
       subtotalPengiriman: { value: 0, manual: false },
       diskonPengiriman: { value: 0, manual: false },
       voucher: { value: 0, manual: false },
+      voucherToko: { value: 0, manual: false },
       biayaLayanan: { value: 0, manual: false },
       total: { value: 0, manual: false }
     };
 
     const invLabels = {
-      hargaSebelum: "Harga sebelum dicoret",
-      hargaSetelah: "Harga setelah dicoret",
-      subtotalProduk: "Subtotal produk",
-      subtotalPengiriman: "Subtotal pengiriman",
-      diskonPengiriman: "Subtotal diskon pengiriman",
-      voucher: "Voucher shopee digunakan",
-      biayaLayanan: "Biaya layanan",
-      total: "Total pesanan"
+      hargaSebelumA: "Harga Sebelum Dicoret A",
+      hargaSetelahA: "Harga Setelah Dicoret A",
+      hargaSebelumB: "Harga Sebelum Dicoret B",
+      hargaSetelahB: "Harga Setelah Dicoret B",
+      hargaSebelumC: "Harga Sebelum Dicoret C",
+      hargaSetelahC: "Harga Setelah Dicoret C",
+      subtotalProduk: "Subtotal Produk",
+      subtotalPengiriman: "Subtotal Pengiriman",
+      diskonPengiriman: "Subtotal Diskon Pengiriman",
+      voucher: "Voucher Shopee Digunakan",
+      voucherToko: "Voucher Toko Digunakan",
+      biayaLayanan: "Biaya Layanan",
+      total: "Total Pesanan"
     };
 
     function formatNumber(n) {
@@ -1174,7 +1298,6 @@
     /* Posisi kursor baru berdasarkan jumlah digit (minus tidak dihitung) */
     function caretFromDigits(formatted, digitCount) {
       if (digitCount <= 0) {
-        // Jika ada minus di depan, taruh kursor tepat setelah minus
         return formatted.charAt(0) === "-" ? 1 : 0;
       }
       var seen = 0;
@@ -1188,18 +1311,37 @@
     }
 
     const invIdMap = {
-      "inv-1": "hargaSebelum",
-      "inv-2": "hargaSetelah",
+      "inv-1a": "hargaSebelumA",
+      "inv-2a": "hargaSetelahA",
+      "inv-1b": "hargaSebelumB",
+      "inv-2b": "hargaSetelahB",
+      "inv-1c": "hargaSebelumC",
+      "inv-2c": "hargaSetelahC",
       "inv-3": "subtotalProduk",
       "inv-4": "subtotalPengiriman",
       "inv-5": "diskonPengiriman",
       "inv-6": "voucher",
+      "inv-6b": "voucherToko",
       "inv-7": "biayaLayanan",
       "inv-8": "total"
     };
 
     /* Field yang nilainya selalu disimpan/ditampilkan negatif */
-    const FORCE_NEGATIVE = { voucher: true, diskonPengiriman: true };
+    const FORCE_NEGATIVE = {
+      voucher: true,
+      voucherToko: true,
+      diskonPengiriman: true
+    };
+
+    /* Pair mapping: sebelum -> setelah */
+    const PAIR_MAP = {
+      hargaSebelumA: "hargaSetelahA",
+      hargaSebelumB: "hargaSetelahB",
+      hargaSebelumC: "hargaSetelahC"
+    };
+
+    const AFTER_KEYS = ["hargaSetelahA", "hargaSetelahB", "hargaSetelahC"];
+    const BEFORE_KEYS = ["hargaSebelumA", "hargaSebelumB", "hargaSebelumC"];
 
     function applyForceSign(key, num) {
       if (!FORCE_NEGATIVE[key]) return num;
@@ -1208,20 +1350,32 @@
     }
 
     function recalculate() {
-      if (!invState.hargaSetelah.manual && invState.hargaSebelum.value !== 0) {
-        invState.hargaSetelah.value = invState.hargaSebelum.value;
-      }
-      if (!invState.subtotalProduk.manual) {
-        invState.subtotalProduk.value = invState.hargaSetelah.value;
-      }
+      // Cascade: sebelum -> setelah (jika setelah belum manual)
+      Object.keys(PAIR_MAP).forEach(function (beforeKey) {
+        var afterKey = PAIR_MAP[beforeKey];
+        if (!invState[afterKey].manual && invState[beforeKey].value !== 0) {
+          invState[afterKey].value = invState[beforeKey].value;
+        }
+      });
+
+      // Subtotal produk = sum harga setelah A+B+C (selalu auto, tidak bisa manual)
+      invState.subtotalProduk.value =
+        invState.hargaSetelahA.value +
+        invState.hargaSetelahB.value +
+        invState.hargaSetelahC.value;
+      invState.subtotalProduk.manual = false;
+
+      // Diskon pengiriman auto = -subtotal pengiriman
       if (!invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
       }
+
       invState.total.value =
         invState.subtotalProduk.value +
         invState.subtotalPengiriman.value +
         invState.diskonPengiriman.value +
         invState.voucher.value +
+        invState.voucherToko.value +
         invState.biayaLayanan.value;
     }
 
@@ -1235,7 +1389,7 @@
       el.value = formatNumber(val);
       el.classList.toggle("is-default", val === 0);
       el.classList.toggle("negative", val < 0);
-      if (key === "total") {
+      if (key === "total" || key === "subtotalProduk") {
         el.classList.add("is-readonly");
       }
     }
@@ -1250,7 +1404,7 @@
     function syncStateFromInputs() {
       Object.keys(invIdMap).forEach(function (id) {
         var key = invIdMap[id];
-        if (key === "total") return;
+        if (key === "total" || key === "subtotalProduk") return;
         var el = document.getElementById(id);
         if (!el) return;
         invState[key].value = applyForceSign(key, parseNumber(el.value));
@@ -1271,10 +1425,8 @@
 
       var newPos;
       if (newDigitCount > prevDigitCount) {
-        // User menambah digit → kursor ke akhir (paling andal untuk input nominal)
         newPos = formatted.length;
       } else {
-        // Hapus / edit tengah → petakan ulang berdasarkan jumlah digit
         newPos = caretFromDigits(formatted, Math.min(digitsBefore, newDigitCount));
       }
       try {
@@ -1285,20 +1437,21 @@
     function onInvInput(e) {
       var el = e.target;
       var key = el.dataset.key;
-      if (!key || key === "total") return;
+      if (!key || key === "total" || key === "subtotalProduk") return;
 
       var num = applyForceSign(key, parseNumber(el.value));
       invState[key].value = num;
       invState[key].manual = true;
 
-      if (key === "hargaSebelum") {
-        if (!invState.hargaSetelah.manual && num !== 0) {
-          invState.hargaSetelah.value = num;
+      // Cascade sebelum -> setelah
+      if (PAIR_MAP[key]) {
+        var afterKey = PAIR_MAP[key];
+        if (!invState[afterKey].manual && num !== 0) {
+          invState[afterKey].value = num;
         }
       }
-      if (key === "hargaSetelah" && !invState.subtotalProduk.manual) {
-        invState.subtotalProduk.value = num;
-      }
+
+      // Cascade pengiriman -> diskon
       if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = num * -1;
       }
@@ -1326,7 +1479,7 @@
     function onInvBlur(e) {
       var el = e.target;
       var key = el.dataset.key;
-      if (!key || key === "total") return;
+      if (!key || key === "total" || key === "subtotalProduk") return;
 
       var raw = el.value.trim();
       var isEmpty = (raw === "" || raw === "0" || raw === "-" || raw === "-0");
@@ -1338,14 +1491,18 @@
         var num = applyForceSign(key, parseNumber(raw));
         invState[key].value = num;
 
-        // Tentukan apakah masih "auto" atau benar-benar manual
-        if (key === "hargaSetelah") {
-          // Auto jika sama dengan harga sebelum (dan sebelum != 0)
-          invState[key].manual = !(invState.hargaSebelum.value !== 0 && num === invState.hargaSebelum.value);
-        } else if (key === "subtotalProduk") {
-          invState[key].manual = (num !== invState.hargaSetelah.value);
+        if (AFTER_KEYS.indexOf(key) !== -1) {
+          // Auto jika sama dengan pasangan sebelum-nya
+          var beforeKey = null;
+          Object.keys(PAIR_MAP).forEach(function (bk) {
+            if (PAIR_MAP[bk] === key) beforeKey = bk;
+          });
+          if (beforeKey && invState[beforeKey].value !== 0 && num === invState[beforeKey].value) {
+            invState[key].manual = false;
+          } else {
+            invState[key].manual = true;
+          }
         } else if (key === "diskonPengiriman") {
-          // Auto jika sama dengan -subtotal pengiriman
           var expected = invState.subtotalPengiriman.value * -1;
           invState[key].manual = (num !== expected);
         } else {
@@ -1353,7 +1510,6 @@
         }
       }
 
-      // Setelah blur, jalankan ulang cascade auto untuk field yang non-manual
       updateInvoiceUI();
     }
 
@@ -1367,7 +1523,6 @@
       if (/^\d$/.test(e.key)) return;
 
       if (e.key === "-") {
-        // Field force-negative: minus otomatis, blok input manual
         if (FORCE_NEGATIVE[key]) {
           e.preventDefault();
           return;
@@ -1375,7 +1530,6 @@
         var start = el.selectionStart || 0;
         var end = el.selectionEnd || 0;
         var hasMinus = el.value.indexOf("-") !== -1;
-        // Boleh hanya di awal, atau saat seleksi penuh (replace)
         if ((start === 0 && end === el.value.length) || (start === 0 && !hasMinus)) return;
         e.preventDefault();
         return;
@@ -1387,7 +1541,7 @@
     function onInvPaste(e) {
       var el = e.target;
       var key = el.dataset.key;
-      if (!key || key === "total") return;
+      if (!key || key === "total" || key === "subtotalProduk") return;
       e.preventDefault();
       var paste = "";
       try {
@@ -1401,11 +1555,11 @@
       el.classList.toggle("is-default", num === 0);
       el.classList.toggle("negative", num < 0);
 
-      if (key === "hargaSebelum" && !invState.hargaSetelah.manual && num !== 0) {
-        invState.hargaSetelah.value = num;
-      }
-      if (key === "hargaSetelah" && !invState.subtotalProduk.manual) {
-        invState.subtotalProduk.value = num;
+      if (PAIR_MAP[key]) {
+        var afterKey = PAIR_MAP[key];
+        if (!invState[afterKey].manual && num !== 0) {
+          invState[afterKey].value = num;
+        }
       }
       if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = num * -1;
@@ -1419,7 +1573,7 @@
     }
 
     function initInvoiceInputs() {
-      var ids = ["inv-1", "inv-2", "inv-3", "inv-4", "inv-5", "inv-6", "inv-7"];
+      var ids = ["inv-1a", "inv-2a", "inv-1b", "inv-2b", "inv-1c", "inv-2c", "inv-4", "inv-5", "inv-6", "inv-6b", "inv-7"];
       ids.forEach(function (id) {
         var el = document.getElementById(id);
         if (!el) return;
@@ -1446,44 +1600,71 @@
     function copyInvoiceDetail(btn) {
       if (btn) createRipple(btn);
 
-      // Selalu sinkronkan dari input aktual sebelum generate teks
       syncStateFromInputs();
       updateInvoiceUI();
 
-      var before = invState.hargaSebelum.value;
-      var after = invState.hargaSetelah.value;
-      // Jika harga sebelum & setelah sama dan bukan 0 → gabung jadi 1 baris
-      var sameHarga = (before !== 0 && after !== 0 && before === after);
+      var tokoAsli = (document.getElementById("tokoAsli") || {}).value || "";
+      var tokoTujuan = (document.getElementById("tokoTujuan") || {}).value || "";
+      tokoAsli = String(tokoAsli).trim();
+      tokoTujuan = String(tokoTujuan).trim();
 
-      var order = [
-        "hargaSebelum",
-        "hargaSetelah",
-        "subtotalProduk",
+      var lines = [];
+
+      // 1. Ubah toko
+      if (tokoAsli && tokoTujuan) {
+        lines.push("Ubah Nama Toko \"" + tokoAsli + "\" menjadi \"" + tokoTujuan + "\"");
+      } else if (tokoAsli) {
+        lines.push("Ubah Nama Toko \"" + tokoAsli + "\"");
+      } else if (tokoTujuan) {
+        lines.push("Ubah Nama Toko menjadi \"" + tokoTujuan + "\"");
+      }
+
+      // 2. Pasangan harga A / B / C
+      var pairs = [
+        { before: "hargaSebelumA", after: "hargaSetelahA", label: "A" },
+        { before: "hargaSebelumB", after: "hargaSetelahB", label: "B" },
+        { before: "hargaSebelumC", after: "hargaSetelahC", label: "C" }
+      ];
+
+      pairs.forEach(function (p) {
+        var before = invState[p.before].value;
+        var after = invState[p.after].value;
+        if (before === 0 && after === 0) return;
+
+        if (before !== 0 && after !== 0 && before === after) {
+          lines.push("Ubah Nominal Harga Barang " + p.label + " menjadi " + formatRp(before));
+        } else {
+          if (before !== 0) {
+            lines.push(invLabels[p.before] + " ubah menjadi " + formatRp(before));
+          }
+          if (after !== 0) {
+            lines.push(invLabels[p.after] + " ubah menjadi " + formatRp(after));
+          }
+        }
+      });
+
+      // 3. Subtotal produk (auto sum)
+      if (invState.subtotalProduk.value !== 0) {
+        lines.push(invLabels.subtotalProduk + " ubah menjadi " + formatRp(invState.subtotalProduk.value));
+      }
+
+      // 4. Field lainnya
+      var restOrder = [
         "subtotalPengiriman",
         "diskonPengiriman",
         "voucher",
+        "voucherToko",
         "biayaLayanan",
         "total"
       ];
 
-      var lines = [];
-      order.forEach(function (key) {
+      restOrder.forEach(function (key) {
         var st = invState[key];
         if (!st || st.value === 0) return;
-
-        // Skip kedua baris harga, diganti 1 baris gabungan
-        if (sameHarga && (key === "hargaSebelum" || key === "hargaSetelah")) {
-          if (key === "hargaSebelum") {
-            lines.push("Ubah nominal harga barang menjadi " + formatRp(before));
-          }
-          return;
-        }
-
-        var label = invLabels[key];
-        lines.push(label + " ubah menjadi " + formatRp(st.value));
+        lines.push(invLabels[key] + " ubah menjadi " + formatRp(st.value));
       });
 
-      var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominalnya saja.\n\nUbah nominal invoice menjadi:\n\n";
+      var text = "Saya memiliki invoice dari Shopee, tugasmu adalah merubah nominalnya saja.\n\nUbah Nominal Invoice Menjadi:\n\n";
       if (lines.length === 0) {
         text += "(Belum ada nominal yang diisi)\n\n";
       } else {
