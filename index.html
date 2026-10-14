@@ -188,17 +188,19 @@
       padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
     }
 
+    /* Diubah dari 500% menjadi 600% karena sekarang ada 6 tab */
     .tabs-wrapper {
       display: flex;
-      width: 400%;
+      width: 600%;
       height: 100%;
       will-change: transform;
       transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
     }
 
+    /* Diubah dari 20% menjadi 16.6666% karena sekarang ada 6 tab */
     .tab-panel {
-      width: 25%;
+      width: 16.6666%;
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
@@ -557,28 +559,30 @@
     .invoice-card {
       background: var(--surface);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius);
+      border-radius: var(--radius-sm);
       box-shadow: var(--shadow);
       overflow: hidden;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .store-card {
       background: var(--surface);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius);
+      border-radius: var(--radius-sm);
       box-shadow: var(--shadow);
-      padding: 10px 12px;
-      margin-bottom: 8px;
+      padding: 6px 8px;
+      margin-bottom: 6px;
     }
 
     .store-card .card-title {
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      font-size: 0.52rem;
     }
+    .store-card .card-title .material-symbols-rounded { font-size: 12px; }
 
     .store-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: stretch;
     }
 
@@ -589,10 +593,10 @@
 
     .store-field label {
       display: block;
-      font-size: 0.62rem;
+      font-size: 0.54rem;
       font-weight: 600;
       color: var(--text-muted);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
       letter-spacing: 0.02em;
     }
 
@@ -601,16 +605,16 @@
       border: 1px solid rgba(148, 163, 184, 0.28);
       background: rgba(248, 250, 252, 0.9);
       font-family: inherit;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--text);
-      padding: 7px 9px;
-      border-radius: 8px;
+      padding: 4px 6px;
+      border-radius: 6px;
       outline: none;
       transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
       -webkit-appearance: none;
       appearance: none;
-      min-height: 34px;
+      min-height: 28px;
       box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
@@ -627,7 +631,7 @@
     .store-input:focus {
       background: #fff;
       border-color: rgba(37, 99, 235, 0.45);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
     }
 
     .invoice-table {
@@ -637,62 +641,62 @@
     }
 
     .invoice-table thead th {
-      font-size: 0.58rem;
+      font-size: 0.5rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--text-secondary);
       background: rgba(241, 245, 249, 0.85);
-      padding: 8px 6px;
+      padding: 4px 4px;
       text-align: left;
       border-bottom: 1px solid var(--border-light);
       white-space: nowrap;
     }
 
-    .invoice-table thead th:nth-child(1) { width: 28px; text-align: center; padding-left: 8px; }
+    .invoice-table thead th:nth-child(1) { width: 22px; text-align: center; padding-left: 4px; }
     .invoice-table thead th:nth-child(2) { width: auto; }
-    .invoice-table thead th:nth-child(3) { width: 28px; text-align: center; }
-    .invoice-table thead th:nth-child(4) { width: 38%; text-align: right; padding-right: 10px; }
+    .invoice-table thead th:nth-child(3) { width: 22px; text-align: center; }
+    .invoice-table thead th:nth-child(4) { width: 36%; text-align: right; padding-right: 6px; }
 
     .invoice-table tbody tr {
-      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.08);
       transition: background 120ms ease;
     }
     .invoice-table tbody tr:last-child { border-bottom: none; }
     .invoice-table tbody tr:active { background: rgba(37, 99, 235, 0.03); }
 
     .invoice-table td {
-      padding: 7px 6px;
+      padding: 3px 4px;
       vertical-align: middle;
-      font-size: 0.78rem;
+      font-size: 0.68rem;
     }
 
     .invoice-table td:nth-child(1) {
       text-align: center;
-      padding-left: 8px;
+      padding-left: 4px;
       font-weight: 650;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.62rem;
       font-variant-numeric: tabular-nums;
     }
 
     .invoice-table td:nth-child(2) {
       font-weight: 550;
       color: var(--text);
-      font-size: 0.76rem;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
+      font-size: 0.64rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
     }
 
     .invoice-table td:nth-child(3) {
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.6rem;
       font-weight: 500;
     }
 
     .invoice-table td:nth-child(4) {
-      padding-right: 8px;
+      padding-right: 4px;
       text-align: right;
     }
 
@@ -701,19 +705,19 @@
       border: 1px solid rgba(148, 163, 184, 0.28);
       background: rgba(248, 250, 252, 0.9);
       font-family: inherit;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 650;
       color: var(--text);
       text-align: right;
-      padding: 6px 8px;
-      border-radius: 8px;
+      padding: 3px 5px;
+      border-radius: 6px;
       outline: none;
       font-variant-numeric: tabular-nums;
       letter-spacing: 0.01em;
       transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
       -webkit-appearance: none;
       appearance: none;
-      min-height: 34px;
+      min-height: 26px;
       box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
@@ -735,7 +739,7 @@
     .inv-input:focus {
       background: #fff;
       border-color: rgba(37, 99, 235, 0.45);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1), inset 0 1px 2px rgba(15, 23, 42, 0.02);
       color: var(--text);
       font-weight: 650;
     }
@@ -765,7 +769,113 @@
 
     .inv-row-total .inv-input {
       font-weight: 750;
-      font-size: 0.84rem;
+      font-size: 0.74rem;
+    }
+
+    #tab-invoice .btn-full {
+      height: 32px;
+      margin-top: 6px;
+      font-size: 0.7rem;
+    }
+
+    /* ===== ALAMAT CARDS ===== */
+    .addr-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .addr-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12%;
+      bottom: 12%;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: linear-gradient(180deg, #2563eb, #0ea5e9);
+      opacity: 0.55;
+    }
+    .addr-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .addr-label .material-symbols-rounded { font-size: 14px; }
+    .addr-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .addr-row:last-child { margin-bottom: 0; }
+    .addr-info { flex: 1; min-width: 0; }
+    .addr-key {
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 1px;
+    }
+    .addr-val {
+      font-size: 0.8rem;
+      font-weight: 650;
+      color: var(--text);
+      line-height: 1.3;
+      word-break: break-word;
+      user-select: text;
+    }
+    .addr-val.mono {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    .addr-val.addr-text {
+      font-size: 0.74rem;
+      font-weight: 550;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+    .addr-card .btn-copy {
+      flex-shrink: 0;
+      min-width: 30px;
+      min-height: 30px;
+      width: 30px;
+      padding: 0;
+      border-radius: 50%;
+    }
+    .addr-card .btn-copy .material-symbols-rounded { font-size: 15px; }
+
+    /* ===== LAPORAN TEXT CARDS ===== */
+    .laporan-text-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .laporan-text {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+      word-break: break-word;
+      user-select: text;
     }
 
     /* ===== BOTTOM NAV ===== */
@@ -799,7 +909,7 @@
       border: none;
       color: var(--text-muted);
       font-family: inherit;
-      font-size: 0.58rem;
+      font-size: 0.54rem; /* Dikecilkan sedikit agar muat 6 tab */
       font-weight: 600;
       cursor: pointer;
       transition: color 200ms var(--ease-out);
@@ -809,7 +919,7 @@
     }
 
     .nav-item .material-symbols-rounded {
-      font-size: 20px;
+      font-size: 19px; /* Dikecilkan sedikit agar muat 6 tab */
       transition: transform 240ms var(--ease-spring), font-variation-settings 200ms ease, color 200ms ease;
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
@@ -826,7 +936,7 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%) scaleX(0);
-      width: 28px;
+      width: 24px;
       height: 2.5px;
       border-radius: 0 0 3px 3px;
       background: linear-gradient(90deg, #1e40af, #0ea5e9);
@@ -899,9 +1009,11 @@
       .list-item { padding: 7px 10px; padding-left: 12px; min-height: 40px; }
       .list-item .name { font-size: 0.8rem; }
       .list-item .number { font-size: 0.7rem; }
-      .invoice-table td:nth-child(2) { font-size: 0.7rem; }
-      .inv-input { font-size: 0.74rem; padding: 4px 4px; }
-      .nav-item { font-size: 0.54rem; }
+      .invoice-table td:nth-child(2) { font-size: 0.6rem; }
+      .inv-input { font-size: 0.66rem; padding: 2px 4px; min-height: 24px; }
+      .nav-item { font-size: 0.5rem; }
+      .nav-item .material-symbols-rounded { font-size: 17px; }
+      .laporan-text { font-size: 0.68rem; }
     }
 
     /* Short screens */
@@ -921,8 +1033,9 @@
       .list-item { padding: 6px 12px; min-height: 38px; }
       .list-item .name { font-size: 0.8rem; margin-bottom: 0; }
       .list-item .number { font-size: 0.7rem; }
-      .invoice-table thead th { padding: 6px 5px; }
-      .invoice-table td { padding: 5px 5px; }
+      .invoice-table thead th { padding: 3px 3px; }
+      .invoice-table td { padding: 2px 3px; }
+      .laporan-text-card { padding: 8px 11px; margin-bottom: 6px; }
       :root { --nav-height: 52px; }
     }
 
@@ -934,6 +1047,7 @@
       .list-item { padding: 5px 10px; min-height: 36px; }
       .kk-card { padding: 8px 10px; }
       .section-title { margin: 8px 0 4px; }
+      .laporan-text-card { padding: 7px 10px; margin-bottom: 5px; }
       :root { --nav-height: 48px; }
     }
 
@@ -1047,7 +1161,12 @@
         <div class="list-group" id="nikOrtuList"></div>
       </section>
 
-      <!-- TAB 3: Invoice -->
+      <!-- TAB 3: Alamat -->
+      <section class="tab-panel" id="tab-alamat" aria-label="Alamat">
+        <div id="alamatList"></div>
+      </section>
+
+      <!-- TAB 4: Invoice -->
       <section class="tab-panel" id="tab-invoice" aria-label="Invoice">
         <div class="store-card">
           <div class="card-title blue">
@@ -1079,39 +1198,39 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Harga Sebelum Dicoret A</td>
+                <td>Harga Barang 1 sebelum dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1a" data-key="hargaSebelumA" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret A"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1a" data-key="hargaSebelumA" placeholder="0" autocomplete="off" aria-label="Harga Barang 1 sebelum dicoret"></td>
               </tr>
               <tr>
                 <td>2</td>
-                <td>Harga Setelah Dicoret A</td>
+                <td>Harga Barang 1 setelah dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2a" data-key="hargaSetelahA" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret A"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2a" data-key="hargaSetelahA" placeholder="0" autocomplete="off" aria-label="Harga Barang 1 setelah dicoret"></td>
               </tr>
               <tr>
                 <td>3</td>
-                <td>Harga Sebelum Dicoret B</td>
+                <td>Harga Barang 2 sebelum dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1b" data-key="hargaSebelumB" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret B"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1b" data-key="hargaSebelumB" placeholder="0" autocomplete="off" aria-label="Harga Barang 2 sebelum dicoret"></td>
               </tr>
               <tr>
                 <td>4</td>
-                <td>Harga Setelah Dicoret B</td>
+                <td>Harga Barang 2 setelah dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2b" data-key="hargaSetelahB" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret B"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2b" data-key="hargaSetelahB" placeholder="0" autocomplete="off" aria-label="Harga Barang 2 setelah dicoret"></td>
               </tr>
               <tr>
                 <td>5</td>
-                <td>Harga Sebelum Dicoret C</td>
+                <td>Harga Barang 3 sebelum dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1c" data-key="hargaSebelumC" placeholder="0" autocomplete="off" aria-label="Harga Sebelum Dicoret C"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-1c" data-key="hargaSebelumC" placeholder="0" autocomplete="off" aria-label="Harga Barang 3 sebelum dicoret"></td>
               </tr>
               <tr>
                 <td>6</td>
-                <td>Harga Setelah Dicoret C</td>
+                <td>Harga Barang 3 setelah dicoret</td>
                 <td>Rp</td>
-                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2c" data-key="hargaSetelahC" placeholder="0" autocomplete="off" aria-label="Harga Setelah Dicoret C"></td>
+                <td><input type="text" inputmode="numeric" class="inv-input is-default" id="inv-2c" data-key="hargaSetelahC" placeholder="0" autocomplete="off" aria-label="Harga Barang 3 setelah dicoret"></td>
               </tr>
               <tr>
                 <td>7</td>
@@ -1164,6 +1283,13 @@
           Salin Detail
         </button>
       </section>
+
+      <!-- TAB 5: Laporan -->
+      <section class="tab-panel" id="tab-laporan" aria-label="Laporan">
+        <div id="laporanList">
+          <!-- Text cards will be injected by JavaScript -->
+        </div>
+      </section>
     </div>
   </main>
 
@@ -1180,9 +1306,17 @@
       <span class="material-symbols-rounded" aria-hidden="true">badge</span>
       NIK
     </button>
-    <button class="nav-item" role="tab" aria-selected="false" data-index="3" onclick="switchTab(3)" aria-label="Invoice">
+    <button class="nav-item" role="tab" aria-selected="false" data-index="3" onclick="switchTab(3)" aria-label="Alamat">
+      <span class="material-symbols-rounded" aria-hidden="true">location_on</span>
+      Alamat
+    </button>
+    <button class="nav-item" role="tab" aria-selected="false" data-index="4" onclick="switchTab(4)" aria-label="Invoice">
       <span class="material-symbols-rounded" aria-hidden="true">receipt</span>
       Invoice
+    </button>
+    <button class="nav-item" role="tab" aria-selected="false" data-index="5" onclick="switchTab(5)" aria-label="Laporan">
+      <span class="material-symbols-rounded" aria-hidden="true">analytics</span>
+      Laporan
     </button>
   </nav>
 
@@ -1217,15 +1351,48 @@
       { name: "Ibu Sunarmi", nik: "3311084705710001" }
     ];
 
+    const addresses = [
+      {
+        label: "Rumah",
+        icon: "home",
+        name: "Ridwan Meirna",
+        number: "085777773541",
+        address: "Tegal Makmur RT 04 RW 05 Banjarsari Surakarta (Rumah Cat Hijau)"
+      },
+      {
+        label: "Maestro Gilingan",
+        icon: "store",
+        name: "Ridwan Audit",
+        number: "085777773541",
+        address: "Maestro Gilingan Surakarta, Jalan Letjen S Parman No. 209, Gilingan"
+      },
+      {
+        label: "Maestro Solo Baru",
+        icon: "store",
+        name: "Ridwan Audit",
+        number: "085777773541",
+        address: "Maestro Solo Baru, Jl. Ir. Soekarno No.54, Dusun I, Madegondo, Kec. Grogol"
+      },
+      {
+        label: "Maestro Pabelan",
+        icon: "store",
+        name: "Ridwan Audit",
+        number: "085777773541",
+        address: "Maestro Pabelan, Jl. Ahmad Yani, Banaran, Pabelan, Kartasura"
+      }
+    ];
+
     const headers = [
       { title: "Tagihan", sub: "Data tagihan penting" },
       { title: "Kontak", sub: "Nomor yang sering digunakan" },
       { title: "NIK", sub: "Data identitas keluarga" },
-      { title: "Invoice", sub: "Bebas ubah invoice" }
+      { title: "Alamat", sub: "Alamat rumah & toko" },
+      { title: "Invoice", sub: "Bebas ubah invoice" },
+      { title: "Laporan", sub: "Format teks laporan" }
     ];
 
     let currentTab = 0;
-    const totalTabs = 4;
+    const totalTabs = 6;
     let toastTimer = null;
     let isAnimating = false;
 
@@ -1250,12 +1417,12 @@
     };
 
     const invLabels = {
-      hargaSebelumA: "Harga Sebelum Dicoret A",
-      hargaSetelahA: "Harga Setelah Dicoret A",
-      hargaSebelumB: "Harga Sebelum Dicoret B",
-      hargaSetelahB: "Harga Setelah Dicoret B",
-      hargaSebelumC: "Harga Sebelum Dicoret C",
-      hargaSetelahC: "Harga Setelah Dicoret C",
+      hargaSebelumA: "Harga Barang 1 sebelum dicoret",
+      hargaSetelahA: "Harga Barang 1 setelah dicoret",
+      hargaSebelumB: "Harga Barang 2 sebelum dicoret",
+      hargaSetelahB: "Harga Barang 2 setelah dicoret",
+      hargaSebelumC: "Harga Barang 3 sebelum dicoret",
+      hargaSetelahC: "Harga Barang 3 setelah dicoret",
       subtotalProduk: "Subtotal Produk",
       subtotalPengiriman: "Subtotal Pengiriman",
       diskonPengiriman: "Subtotal Diskon Pengiriman",
@@ -1275,8 +1442,6 @@
       return neg ? ("-" + str) : str;
     }
 
-    /* Hanya minus di AWAL yang dihitung sebagai negatif.
-       Digit diambil murni — aman dari kursor di tengah. */
     function parseNumber(str) {
       if (str === null || str === undefined) return 0;
       var s = String(str).trim();
@@ -1289,13 +1454,11 @@
       return neg ? -n : n;
     }
 
-    /* Hitung hanya DIGIT sebelum posisi kursor (abaikan minus & titik) */
     function countDigitsBefore(str, pos) {
       var slice = String(str).slice(0, Math.max(0, pos));
       return (slice.match(/\d/g) || []).length;
     }
 
-    /* Posisi kursor baru berdasarkan jumlah digit (minus tidak dihitung) */
     function caretFromDigits(formatted, digitCount) {
       if (digitCount <= 0) {
         return formatted.charAt(0) === "-" ? 1 : 0;
@@ -1326,14 +1489,12 @@
       "inv-8": "total"
     };
 
-    /* Field yang nilainya selalu disimpan/ditampilkan negatif */
     const FORCE_NEGATIVE = {
       voucher: true,
       voucherToko: true,
       diskonPengiriman: true
     };
 
-    /* Pair mapping: sebelum -> setelah */
     const PAIR_MAP = {
       hargaSebelumA: "hargaSetelahA",
       hargaSebelumB: "hargaSetelahB",
@@ -1350,7 +1511,6 @@
     }
 
     function recalculate() {
-      // Cascade: sebelum -> setelah (jika setelah belum manual)
       Object.keys(PAIR_MAP).forEach(function (beforeKey) {
         var afterKey = PAIR_MAP[beforeKey];
         if (!invState[afterKey].manual && invState[beforeKey].value !== 0) {
@@ -1358,14 +1518,12 @@
         }
       });
 
-      // Subtotal produk = sum harga setelah A+B+C (selalu auto, tidak bisa manual)
       invState.subtotalProduk.value =
         invState.hargaSetelahA.value +
         invState.hargaSetelahB.value +
         invState.hargaSetelahC.value;
       invState.subtotalProduk.manual = false;
 
-      // Diskon pengiriman auto = -subtotal pengiriman
       if (!invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = invState.subtotalPengiriman.value * -1;
       }
@@ -1443,7 +1601,6 @@
       invState[key].value = num;
       invState[key].manual = true;
 
-      // Cascade sebelum -> setelah
       if (PAIR_MAP[key]) {
         var afterKey = PAIR_MAP[key];
         if (!invState[afterKey].manual && num !== 0) {
@@ -1451,7 +1608,6 @@
         }
       }
 
-      // Cascade pengiriman -> diskon
       if (key === "subtotalPengiriman" && !invState.diskonPengiriman.manual) {
         invState.diskonPengiriman.value = num * -1;
       }
@@ -1492,7 +1648,6 @@
         invState[key].value = num;
 
         if (AFTER_KEYS.indexOf(key) !== -1) {
-          // Auto jika sama dengan pasangan sebelum-nya
           var beforeKey = null;
           Object.keys(PAIR_MAP).forEach(function (bk) {
             if (PAIR_MAP[bk] === key) beforeKey = bk;
@@ -1513,10 +1668,31 @@
       updateInvoiceUI();
     }
 
+    function focusNextInvField(currentEl) {
+      var order = ["tokoAsli", "tokoTujuan", "inv-1a", "inv-2a", "inv-1b", "inv-2b", "inv-1c", "inv-2c", "inv-4", "inv-5", "inv-6", "inv-6b", "inv-7"];
+      var id = currentEl.id;
+      var idx = order.indexOf(id);
+      if (idx < 0) return;
+      var nextId = order[idx + 1];
+      if (!nextId) return;
+      var next = document.getElementById(nextId);
+      if (next) {
+        next.focus();
+        try { next.select(); } catch (_) {}
+      }
+    }
+
     function onInvKeydown(e) {
       var el = e.target;
       var key = el.dataset.key;
-      var allowedNav = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Home", "End", "Enter", "Escape"];
+
+      if (e.key === "Enter") {
+        e.preventDefault();
+        focusNextInvField(el);
+        return;
+      }
+
+      var allowedNav = ["Backspace", "Delete", "Tab", "ArrowLeft", "ArrowRight", "Home", "End", "Escape"];
       if (allowedNav.indexOf(e.key) !== -1) return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
@@ -1583,10 +1759,19 @@
         el.addEventListener("keydown", onInvKeydown);
         el.addEventListener("paste", onInvPaste);
       });
+      ["tokoAsli", "tokoTujuan"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            focusNextInvField(el);
+          }
+        });
+      });
       updateInvoiceUI();
     }
 
-    /* Format untuk teks salinan: Rp200.000 atau -Rp8.900 (tanpa spasi) */
     function formatRp(n) {
       var num = Number(n);
       if (!isFinite(num)) num = 0;
@@ -1610,7 +1795,6 @@
 
       var lines = [];
 
-      // 1. Ubah toko
       if (tokoAsli && tokoTujuan) {
         lines.push("Ubah Nama Toko \"" + tokoAsli + "\" menjadi \"" + tokoTujuan + "\"");
       } else if (tokoAsli) {
@@ -1619,11 +1803,10 @@
         lines.push("Ubah Nama Toko menjadi \"" + tokoTujuan + "\"");
       }
 
-      // 2. Pasangan harga A / B / C
       var pairs = [
-        { before: "hargaSebelumA", after: "hargaSetelahA", label: "A" },
-        { before: "hargaSebelumB", after: "hargaSetelahB", label: "B" },
-        { before: "hargaSebelumC", after: "hargaSetelahC", label: "C" }
+        { before: "hargaSebelumA", after: "hargaSetelahA", num: "1" },
+        { before: "hargaSebelumB", after: "hargaSetelahB", num: "2" },
+        { before: "hargaSebelumC", after: "hargaSetelahC", num: "3" }
       ];
 
       pairs.forEach(function (p) {
@@ -1631,24 +1814,28 @@
         var after = invState[p.after].value;
         if (before === 0 && after === 0) return;
 
+        if (before === 0 && after !== 0) {
+          lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(after));
+          return;
+        }
+
         if (before !== 0 && after !== 0 && before === after) {
-          lines.push("Ubah Nominal Harga Barang " + p.label + " menjadi " + formatRp(before));
-        } else {
-          if (before !== 0) {
-            lines.push(invLabels[p.before] + " ubah menjadi " + formatRp(before));
-          }
-          if (after !== 0) {
-            lines.push(invLabels[p.after] + " ubah menjadi " + formatRp(after));
-          }
+          lines.push("Ubah harga barang " + p.num + " menjadi " + formatRp(before));
+          return;
+        }
+
+        if (before !== 0) {
+          lines.push(invLabels[p.before] + " ubah menjadi " + formatRp(before));
+        }
+        if (after !== 0) {
+          lines.push(invLabels[p.after] + " ubah menjadi " + formatRp(after));
         }
       });
 
-      // 3. Subtotal produk (auto sum)
       if (invState.subtotalProduk.value !== 0) {
         lines.push(invLabels.subtotalProduk + " ubah menjadi " + formatRp(invState.subtotalProduk.value));
       }
 
-      // 4. Field lainnya
       var restOrder = [
         "subtotalPengiriman",
         "diskonPengiriman",
@@ -1676,6 +1863,56 @@
     }
 
     /* ===== EXISTING HELPERS ===== */
+    function escapeAttr(s) {
+      return String(s).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, "&quot;");
+    }
+
+    function renderAddresses() {
+      const container = document.getElementById("alamatList");
+      if (!container) return;
+      container.innerHTML = addresses.map(function (a) {
+        var nameEsc = escapeAttr(a.name);
+        var numEsc = escapeAttr(a.number);
+        var addrEsc = escapeAttr(a.address);
+        var labelEsc = escapeAttr(a.label);
+        return (
+          '<div class="addr-card">' +
+            '<div class="addr-label">' +
+              '<span class="material-symbols-rounded" aria-hidden="true">' + a.icon + '</span>' +
+              a.label +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Nama</div>' +
+                '<div class="addr-val">' + a.name + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + nameEsc + '\', this)" aria-label="Salin nama ' + labelEsc + '" title="Salin nama">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Nomor</div>' +
+                '<div class="addr-val mono">' + a.number + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + numEsc + '\', this)" aria-label="Salin nomor ' + labelEsc + '" title="Salin nomor">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="addr-row">' +
+              '<div class="addr-info">' +
+                '<div class="addr-key">Alamat</div>' +
+                '<div class="addr-val addr-text">' + a.address + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn btn-copy" onclick="copyText(\'' + addrEsc + '\', this)" aria-label="Salin alamat ' + labelEsc + '" title="Salin alamat">' +
+                '<span class="material-symbols-rounded" aria-hidden="true">content_copy</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join("");
+    }
+
     function renderContacts() {
       const container = document.getElementById("contactsList");
       container.innerHTML = contacts.map((c) => `
@@ -1738,7 +1975,6 @@
         return;
       }
 
-      // Prefer modern Clipboard API when available (HTTPS / localhost)
       if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
         navigator.clipboard.writeText(text).then(function () {
           showToast("Berhasil disalin");
@@ -1753,7 +1989,6 @@
     function fallbackCopy(text) {
       var ta = document.createElement("textarea");
       ta.value = text;
-      // Harus bisa di-focus & di-select agar execCommand('copy') bekerja di mobile
       ta.setAttribute("readonly", "");
       ta.style.cssText = "position:fixed;top:0;left:0;width:2em;height:2em;padding:0;margin:0;border:none;outline:none;box-shadow:none;background:transparent;opacity:0.01;z-index:99999;font-size:16px;";
       document.body.appendChild(ta);
@@ -1768,13 +2003,11 @@
         ok = false;
       }
 
-      // Bersihkan
       try { document.body.removeChild(ta); } catch (_) {}
 
       if (ok) {
         showToast("Berhasil disalin");
       } else {
-        // Last resort: prompt agar user bisa salin manual
         try {
           window.prompt("Salin teks di bawah ini (Ctrl+C / Cmd+C):", text);
           showToast("Salin manual dari kotak dialog");
@@ -1846,12 +2079,13 @@ Email : ridwan.budilaksono@gmail.com`;
       currentTab = next;
       updateNavAndHeader();
 
-      // 4 tabs: positions 0, -25, -50, -75
-      const isWrapForward = prev === 3 && next === 0;
-      const isWrapBackward = prev === 0 && next === 3;
+      // Karena 6 tab: posisi 0, -16.666%, -33.333%, -50%, -66.666%, -83.333%
+      const step = 100 / totalTabs; 
+      
+      const isWrapForward = prev === (totalTabs - 1) && next === 0;
+      const isWrapBackward = prev === 0 && next === (totalTabs - 1);
 
       if (isWrapForward) {
-        // animate to a temporary -100% then snap to 0
         setTransform(-100, true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
@@ -1864,12 +2098,11 @@ Email : ridwan.budilaksono@gmail.com`;
         tabsWrapper.addEventListener("transitionend", onEnd);
         setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
       } else if (isWrapBackward) {
-        // animate to +25% then snap to -75%
-        setTransform(25, true);
+        setTransform(step, true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
-          setTransform(-75, false);
+          setTransform(-(totalTabs - 1) * step, false);
           void tabsWrapper.offsetWidth;
           tabsWrapper.style.transition = TRANSITION;
           isAnimating = false;
@@ -1877,7 +2110,7 @@ Email : ridwan.budilaksono@gmail.com`;
         tabsWrapper.addEventListener("transitionend", onEnd);
         setTimeout(() => { isAnimating = false; }, TAB_DURATION + 50);
       } else {
-        setTransform(-(next * 25), true);
+        setTransform(-(next * step), true);
         const onEnd = (e) => {
           if (e.propertyName !== "transform") return;
           tabsWrapper.removeEventListener("transitionend", onEnd);
@@ -1889,7 +2122,8 @@ Email : ridwan.budilaksono@gmail.com`;
     }
 
     function updateUI() {
-      setTransform(-(currentTab * 25), false);
+      const step = 100 / totalTabs;
+      setTransform(-(currentTab * step), false);
       updateNavAndHeader();
     }
 
@@ -1923,6 +2157,76 @@ Email : ridwan.budilaksono@gmail.com`;
       if (e.key === "ArrowRight") switchTab(currentTab + 1);
     });
 
+    /* ===== GENERATE LAPORAN TEXTS ===== */
+    function renderLaporan() {
+      const currentDate = new Date();
+      const currentDay = currentDate.getDate();
+      let monthIndex = currentDate.getMonth(); 
+      let yearNumber = currentDate.getFullYear();
+      let isBulanIni = false;
+
+      // Jika tanggal 28, 29, 30, 31 maka menggunakan bulan ini.
+      if (currentDay >= 28) {
+        isBulanIni = true;
+      }
+
+      let targetMonthIndex = monthIndex;
+      let targetYearNumber = yearNumber;
+      
+      // Jika tanggal 1-27, maka bulan ini dianggap sebagai bulan sebelumnya.
+      if (!isBulanIni) {
+        targetMonthIndex = monthIndex - 1;
+        if (targetMonthIndex < 0) {
+          targetMonthIndex = 11;
+          targetYearNumber -= 1;
+        }
+      }
+
+      // Hitung bulan sebelumnya dari target bulan ini
+      let prevMonthIndex = targetMonthIndex - 1;
+      let prevYearNumber = targetYearNumber;
+      if (prevMonthIndex < 0) {
+        prevMonthIndex = 11;
+        prevYearNumber -= 1;
+      }
+
+      const bulanArray = [
+        "JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI",
+        "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"
+      ];
+
+      const bulanIniStr = bulanArray[targetMonthIndex];
+      const bulanSebelumnyaStr = bulanArray[prevMonthIndex];
+
+      const currentYearOnly = currentDate.getFullYear();
+
+      // Template teks
+      const texts = [
+        `Perbandingan Gaji Bulan *${bulanIniStr} ${targetYearNumber}* Dengan  Perbandingan Gaji 2026  Bulan *${bulanSebelumnyaStr} ${prevYearNumber}*`,
+        `Bonus Karyawan *${bulanIniStr} ${targetYearNumber}*`,
+        `REKAP DATA THR MAESTRO - ${currentYearOnly}`,
+        `*1. MAESTRO GILINGAN - ${bulanIniStr} ${targetYearNumber}*`,
+        `*2. MAESTRO SOLO BARU - ${bulanIniStr} ${targetYearNumber}*`,
+        `*3. MAESTRO PABELAN - ${bulanIniStr} ${targetYearNumber}*`,
+        `*4. DIVISI SALON - ${bulanIniStr} ${targetYearNumber}*`,
+        `*5. DIVISI JOG - ${bulanIniStr} ${targetYearNumber}*`,
+        `*6. DIVISI KACA FILM - ${bulanIniStr} ${targetYearNumber}*`
+      ];
+
+      const container = document.getElementById("laporanList");
+      container.innerHTML = texts.map((text, i) => {
+        const escapedText = escapeAttr(text);
+        return `
+          <div class="laporan-text-card">
+            <div class="laporan-text">${text.replace(/\n/g, "<br>")}</div>
+            <button type="button" class="btn btn-copy" onclick="copyText('${escapedText}', this)" aria-label="Salin teks laporan" title="Salin">
+              <span class="material-symbols-rounded" aria-hidden="true">content_copy</span>
+            </button>
+          </div>
+        `;
+      }).join("");
+    }
+
     // Reveal icons only after Material Symbols font is ready
     function revealIcons() {
       document.documentElement.classList.add("fonts-ready");
@@ -1938,7 +2242,9 @@ Email : ridwan.budilaksono@gmail.com`;
     renderContacts();
     renderNikList(nikKeluarga, "nikKeluargaList");
     renderNikList(nikOrtu, "nikOrtuList");
+    renderAddresses();
     initInvoiceInputs();
+    renderLaporan(); // Init tab laporan
     updateUI();
   </script>
 </body>
